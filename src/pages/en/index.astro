@@ -380,10 +380,29 @@ import Layout from '../../layouts/Layout.astro';
         </article>
 
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-yellow-500/50 transition-all flex flex-col">
-          <div class="h-56 w-full bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200&auto=format&fit=crop" alt="Smart parking system" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-30"></div>
-          </div>
+         <div class="h-52 w-full bg-slate-950 relative overflow-hidden">
+  <video
+    class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="/portafolio-luis/parkade.jpg"
+  >
+    <source src="/portafolio-luis/parkade-demo.mp4?v=3" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 z-30 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+
+  <div class="absolute top-3 left-3 z-40 px-3 py-1 rounded-full border border-yellow-500/40 bg-black/70 text-yellow-300 text-xs font-mono">
+    BERKELEY 2ND PLACE
+  </div>
+
+  <div class="absolute bottom-3 left-3 z-40 px-3 py-1 rounded-full border border-cyan-500/40 bg-black/70 text-cyan-300 text-xs font-mono">
+    AI PARKING OCCUPANCY VISUALIZATION
+  </div>
+</div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-2">
