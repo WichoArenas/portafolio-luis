@@ -22,3 +22,19 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Raw / heavy videos
+assets_raw/
+*.mov
+*.avi
+*.mkv
+
+# AI model weights
+*.pt
+*.pth
+*.onnx
+*.engine
+*.weights
+
+# YOLO outputs
+runs/
