@@ -9,7 +9,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
 
 <Layout>
    
-    
+
  
   <nav class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between items-center relative z-10">
     <a href="/portafolio-luis/en/" class="text-sm font-bold tracking-[0.25em] text-slate-200 hover:text-cyan-300 transition-colors">
@@ -332,7 +332,19 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col md:col-span-2">
           <div class="h-72 w-full bg-slate-900 relative flex justify-center items-center overflow-hidden">
             <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/satellite.jpg</span>
-            <img src="/portafolio-luis/satellite.jpg" alt="Satellite scan model preview" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+            
+                        <video
+  class="absolute inset-0 w-full h-full object-cover z-20 group-hover:grayscale-0 transition-all duration-500"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  poster="/portafolio-luis/satellite.jpg"
+>
+  <source src="/portafolio-luis/satellite-demo.mp4?v=1" type="video/mp4" />
+</video>
+
             <div class="absolute inset-0 z-30 bg-gradient-to-b from-transparent via-cyan-500/25 to-transparent animate-[scan_3.2s_ease-in-out_infinite] pointer-events-none"></div>
             <div class="absolute inset-0 z-30 satellite-grid pointer-events-none"></div>
           </div>
@@ -357,7 +369,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
             <div class="absolute inset-0 drone-grid"></div>
             <div class="drone-path"><span class="drone-dot">✦</span></div>
             <video
-  class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-75 transition-opacity duration-500"
+  class="absolute inset-0 w-full h-full object-cover z-20 opacity-100 over:grayscale-0 transition-all duration-500" 
   autoplay
   muted
   loop
@@ -389,7 +401,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
 
             <div class="h-52 w-full bg-slate-950 relative overflow-hidden">
   <video
-    class="absolute inset-0 w-full h-full object-cover z-20 opacity-100 grayscale group-hover:grayscale-0 transition-all duration-500"
+    class="absolute inset-0 w-full h-full object-cover z-20 opacity-100 group-hover:grayscale-0 transition-all duration-500"
     autoplay
     muted
     loop
@@ -449,7 +461,7 @@ Awarded 2nd Place at Berkeley. Intelligent parking system designed to optimize s
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-blue-500/50 transition-all flex flex-col">
           <div class="h-56 w-full bg-slate-800 relative flex justify-center items-center">
             <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/saqms.jpg</span>
-            <img src="/portafolio-luis/saqms.jpg" alt="SAQMS environmental monitoring system" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+            <img src="/portafolio-luis/saqms.jpg" alt="SAQMS environmental monitoring system" class="absolute inset-0 w-full h-full object-cover z-20 group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
           </div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
@@ -469,7 +481,7 @@ Awarded 2nd Place at Berkeley. Intelligent parking system designed to optimize s
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
           <div class="h-56 w-full bg-slate-900 relative flex justify-center items-center overflow-hidden">
             <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/ia-vision.jpg</span>
-            <img src="/portafolio-luis/ia-vision.jpg" alt="Real-time AI integration" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+            <img src="/portafolio-luis/ia-vision.jpg" alt="Real-time AI integration" class="absolute inset-0 w-full h-full object-cover z-20 group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
             <div class="absolute inset-0 z-30 pointer-events-none bg-[linear-gradient(115deg,transparent,rgba(6,182,212,0.18),transparent)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
           </div>
           <div class="p-6 flex-grow flex flex-col justify-between">
@@ -488,11 +500,17 @@ Awarded 2nd Place at Berkeley. Intelligent parking system designed to optimize s
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
   <div class="relative h-64 w-full bg-slate-950 overflow-hidden pcb-panel">
     
-    <img
-      src="/portafolio-luis/pcb-board.png"
-      alt="Custom PCB design for embedded systems"
-      class="absolute inset-0 w-full h-full object-cover z-10 pcb-image"
-    />
+            <video
+  class="absolute inset-0 w-full h-full object-cover z-20  group-hover:grayscale-0 transition-all duration-500"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  poster="/portafolio-luis/pcb-board.png"
+>
+  <source src="/portafolio-luis/kicad-demo.mp4?v=1" type="video/mp4" />
+</video>
 
     <!-- Overlay gradient -->
     <div class="absolute inset-0 z-20 bg-gradient-to-t from-black/75 via-black/15 to-transparent pointer-events-none"></div>
@@ -536,7 +554,7 @@ Awarded 2nd Place at Berkeley. Intelligent parking system designed to optimize s
       </div>
 
       <p class="text-slate-400 text-sm leading-relaxed mb-4">
-        Design and integration of embedded electronic platforms for intelligent systems, including PCB-oriented workflows, firmware logic, sensor interfaces, power stages, and real-time hardware/software synchronization.
+        PCB-oriented electronic design workflow integrating schematic capture, board layout, 3D inspection, embedded interfaces, firmware planning, and hardware/software synchronization for intelligent sensing platforms.
       </p>
     </div>
 

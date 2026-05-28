@@ -1,0 +1,123 @@
+[
+  {
+    "title": "Google Project Management Professional Certificate (v2)",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Dec 2025",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/67e8a572-2d74-4afa-8e01-00398ce154b0/linked_in_profile",
+    "category": "Project Management",
+    "featured": true,
+    "skills": ["Project Management", "Agile", "Planning", "Execution"]
+  },
+  {
+    "title": "Google Project Management Professional Certificate",
+    "issuer": "Google / Coursera",
+    "platform": "Coursera",
+    "date": "Dec 2025",
+    "credentialId": "NFKRJJX9ELAV",
+    "url": "https://www.coursera.org/account/accomplishments/professional-cert/NFKRJJX9ELAV?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof",
+    "category": "Project Management",
+    "featured": true,
+    "skills": ["Project Management", "Agile", "Risk Management", "Stakeholders"]
+  },
+  {
+    "title": "Project Planning: Putting It All Together",
+    "issuer": "Google",
+    "platform": "Coursera",
+    "date": "Dec 2025",
+    "credentialId": "YH7J7F27EL50",
+    "url": "https://www.coursera.org/account/accomplishments/verify/YH7J7F27EL50",
+    "category": "Project Management",
+    "featured": false,
+    "skills": ["Planning", "Budgeting", "Risk Management", "Project Execution"]
+  },
+  {
+    "title": "Machine Learning",
+    "issuer": "Stanford University",
+    "platform": "Coursera",
+    "date": "Jul 2025",
+    "credentialId": "4IXHB5C8WXDS",
+    "url": "https://www.coursera.org/account/accomplishments/specialization/4IXHB5C8WXDS",
+    "category": "Artificial Intelligence",
+    "featured": true,
+    "skills": ["Machine Learning", "Supervised Learning", "Model Evaluation", "Python"]
+  },
+  {
+    "title": "Google Advanced Data Analytics Specialization",
+    "issuer": "Google",
+    "platform": "Coursera",
+    "date": "Mar 2025",
+    "credentialId": "E9DHN6X9CN0E",
+    "url": "https://www.coursera.org/account/accomplishments/specialization/E9DHN6X9CN0E",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": ["Advanced Analytics", "Regression", "Python", "Data Science"]
+  },
+  {
+    "title": "Google Advanced Data Analytics Certificate",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Mar 2025",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/b1c86cb8-69be-4055-bedd-cf8c2ade5778/linked_in_profile",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": ["Data Analytics", "Statistics", "Machine Learning", "Python"]
+  },
+  {
+    "title": "The Nuts and Bolts of Machine Learning",
+    "issuer": "Google",
+    "platform": "Coursera",
+    "date": "Mar 2025",
+    "credentialId": "9RWAC44AOJ3S",
+    "url": "https://www.coursera.org/account/accomplishments/verify/9RWAC44AOJ3S",
+    "category": "Artificial Intelligence",
+    "featured": false,
+    "skills": ["Machine Learning", "Model Training", "Supervised Learning", "Unsupervised Learning"]
+  },
+  {
+    "title": "Google Business Intelligence Certificate",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Aug 2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/4d593032-7f97-4a4a-a9ef-b9131245f077/linked_in_profile",
+    "category": "Business Intelligence",
+    "featured": true,
+    "skills": ["Business Intelligence", "Dashboards", "Data Visualization", "Decision Support"]
+  },
+  {
+    "title": "Google Data Analytics Professional Certificate",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Aug 2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/fcaeacf0-eaf8-46ec-8ccb-12567c799e66/linked_in_profile",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": ["Data Analytics", "SQL", "Spreadsheets", "Visualization"]
+  },
+  {
+    "title": "Google IT Automation with Python Professional Certificate",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Jul 2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/4f8b58a0-ff28-46b3-8e02-cbf9f3365d75/linked_in_profile",
+    "category": "Automation",
+    "featured": true,
+    "skills": ["Python", "Automation", "IT", "Scripting"]
+  },
+  {
+    "title": "Google AI Essentials V1",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/26f455c6-42b3-4e06-8ef5-cf3fc1fc8088/linked_in_profile",
+    "category": "Artificial Intelligence",
+    "featured": true,
+    "skills": ["Generative AI", "AI Productivity", "Prompting", "Responsible AI"]
+  }
+]
