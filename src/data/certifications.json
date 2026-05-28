@@ -1,50 +1,6 @@
 [
   {
-    "title": "Google Project Management Professional Certificate (v2)",
-    "issuer": "Google / Coursera",
-    "platform": "Credly",
-    "date": "Dec 2025",
-    "credentialId": "Credly Badge",
-    "url": "https://www.credly.com/badges/67e8a572-2d74-4afa-8e01-00398ce154b0/linked_in_profile",
-    "category": "Project Management",
-    "featured": true,
-    "skills": ["Project Management", "Agile", "Planning", "Execution"]
-  },
-  {
-    "title": "Google Project Management Professional Certificate",
-    "issuer": "Google / Coursera",
-    "platform": "Coursera",
-    "date": "Dec 2025",
-    "credentialId": "NFKRJJX9ELAV",
-    "url": "https://www.coursera.org/account/accomplishments/professional-cert/NFKRJJX9ELAV?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof",
-    "category": "Project Management",
-    "featured": true,
-    "skills": ["Project Management", "Agile", "Risk Management", "Stakeholders"]
-  },
-  {
-    "title": "Project Planning: Putting It All Together",
-    "issuer": "Google",
-    "platform": "Coursera",
-    "date": "Dec 2025",
-    "credentialId": "YH7J7F27EL50",
-    "url": "https://www.coursera.org/account/accomplishments/verify/YH7J7F27EL50",
-    "category": "Project Management",
-    "featured": false,
-    "skills": ["Planning", "Budgeting", "Risk Management", "Project Execution"]
-  },
-  {
-    "title": "Machine Learning",
-    "issuer": "Stanford University",
-    "platform": "Coursera",
-    "date": "Jul 2025",
-    "credentialId": "4IXHB5C8WXDS",
-    "url": "https://www.coursera.org/account/accomplishments/specialization/4IXHB5C8WXDS",
-    "category": "Artificial Intelligence",
-    "featured": true,
-    "skills": ["Machine Learning", "Supervised Learning", "Model Evaluation", "Python"]
-  },
-  {
-    "title": "Google Advanced Data Analytics Specialization",
+    "title": "Coursera | Online Courses & Credentials From Top Educators. Join for Free",
     "issuer": "Google",
     "platform": "Coursera",
     "date": "Mar 2025",
@@ -52,10 +8,17 @@
     "url": "https://www.coursera.org/account/accomplishments/specialization/E9DHN6X9CN0E",
     "category": "Data Analytics",
     "featured": true,
-    "skills": ["Advanced Analytics", "Regression", "Python", "Data Science"]
+    "skills": [
+      "Advanced Analytics",
+      "Regression",
+      "Python",
+      "Data Science"
+    ],
+    "image": "https://s3.amazonaws.com/coursera/media/Grid_Coursera_Partners_updated.png",
+    "description": "Learn online and earn valuable credentials from top universities like Yale, Michigan, Stanford, and leading companies like Google and IBM. Join Coursera for free and transform your career with degrees, certificates, Specializations, & MOOCs in data science, computer science, business, and dozens of other topics."
   },
   {
-    "title": "Google Advanced Data Analytics Certificate",
+    "title": "Google Advanced Data Analytics Certificate was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
     "issuer": "Google / Coursera",
     "platform": "Credly",
     "date": "Mar 2025",
@@ -63,43 +26,35 @@
     "url": "https://www.credly.com/badges/b1c86cb8-69be-4055-bedd-cf8c2ade5778/linked_in_profile",
     "category": "Data Analytics",
     "featured": true,
-    "skills": ["Data Analytics", "Statistics", "Machine Learning", "Python"]
+    "skills": [
+      "Data Analytics",
+      "Statistics",
+      "Machine Learning",
+      "Python"
+    ],
+    "image": "https://images.credly.com/images/9267a387-1a51-4ebe-8c05-976a5ec4c3d0/linkedin_thumb_image.png",
+    "description": "Those who earn the Google Advanced Data Analytics Certificate, developed by Google, have demonstrated their competence in advanced data analysis techniques. Through hands-on activities and assessments, graduates develop proficiency in exploring large datasets, building models to extract insights, machine learning, and predictive modeling, preparing them for advanced roles in data analytics and entry-level roles in data science."
   },
   {
-    "title": "The Nuts and Bolts of Machine Learning",
-    "issuer": "Google",
+    "title": "Coursera | Online Courses & Credentials From Top Educators. Join for Free",
+    "issuer": "Stanford University",
     "platform": "Coursera",
-    "date": "Mar 2025",
-    "credentialId": "9RWAC44AOJ3S",
-    "url": "https://www.coursera.org/account/accomplishments/verify/9RWAC44AOJ3S",
+    "date": "Jul 2025",
+    "credentialId": "4IXHB5C8WXDS",
+    "url": "https://www.coursera.org/account/accomplishments/specialization/4IXHB5C8WXDS",
     "category": "Artificial Intelligence",
-    "featured": false,
-    "skills": ["Machine Learning", "Model Training", "Supervised Learning", "Unsupervised Learning"]
-  },
-  {
-    "title": "Google Business Intelligence Certificate",
-    "issuer": "Google / Coursera",
-    "platform": "Credly",
-    "date": "Aug 2024",
-    "credentialId": "Credly Badge",
-    "url": "https://www.credly.com/badges/4d593032-7f97-4a4a-a9ef-b9131245f077/linked_in_profile",
-    "category": "Business Intelligence",
     "featured": true,
-    "skills": ["Business Intelligence", "Dashboards", "Data Visualization", "Decision Support"]
+    "skills": [
+      "Machine Learning",
+      "Supervised Learning",
+      "Model Evaluation",
+      "Python"
+    ],
+    "image": "https://s3.amazonaws.com/coursera/media/Grid_Coursera_Partners_updated.png",
+    "description": "Learn online and earn valuable credentials from top universities like Yale, Michigan, Stanford, and leading companies like Google and IBM. Join Coursera for free and transform your career with degrees, certificates, Specializations, & MOOCs in data science, computer science, business, and dozens of other topics."
   },
   {
-    "title": "Google Data Analytics Professional Certificate",
-    "issuer": "Google / Coursera",
-    "platform": "Credly",
-    "date": "Aug 2024",
-    "credentialId": "Credly Badge",
-    "url": "https://www.credly.com/badges/fcaeacf0-eaf8-46ec-8ccb-12567c799e66/linked_in_profile",
-    "category": "Data Analytics",
-    "featured": true,
-    "skills": ["Data Analytics", "SQL", "Spreadsheets", "Visualization"]
-  },
-  {
-    "title": "Google IT Automation with Python Professional Certificate",
+    "title": "Google IT Automation with Python Professional Certificate was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
     "issuer": "Google / Coursera",
     "platform": "Credly",
     "date": "Jul 2024",
@@ -107,10 +62,89 @@
     "url": "https://www.credly.com/badges/4f8b58a0-ff28-46b3-8e02-cbf9f3365d75/linked_in_profile",
     "category": "Automation",
     "featured": true,
-    "skills": ["Python", "Automation", "IT", "Scripting"]
+    "skills": [
+      "Python",
+      "Automation",
+      "IT",
+      "Scripting"
+    ],
+    "image": "https://images.credly.com/images/efbdc0d6-b46e-4e3c-8cf8-2314d8a5b971/linkedin_thumb_GCC_badge_python_1000x1000.png",
+    "description": "Those who earn the Google IT Automation with Python Certificate, developed by Google, have demonstrated their competence in advanced IT service and automation. Through hands-on activities and assessments, graduates develop proficiency in Python, Git, and IT automation, preparing them to advance their careers in IT support and systems administration."
   },
   {
-    "title": "Google AI Essentials V1",
+    "title": "Google Project Management Professional Certificate (v2) was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Dec 2025",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/67e8a572-2d74-4afa-8e01-00398ce154b0/linked_in_profile",
+    "category": "Project Management",
+    "featured": true,
+    "skills": [
+      "Project Management",
+      "Agile",
+      "Planning",
+      "Execution"
+    ],
+    "image": "https://images.credly.com/images/a34119f2-402f-4443-8555-ccfe2520f1df/linkedin_thumb_GCC_badge_PGM_1000x1000.png",
+    "description": "Those who earn the Google Project Management Certificate, developed by Google, have demonstrated their competence in foundational project management. Through hands-on activities and assessments, graduates develop proficiency in initiating, planning, and running both traditional and agile projects, preparing them for introductory-level roles in project management."
+  },
+  {
+    "title": "Coursera | Online Courses & Credentials From Top Educators. Join for Free",
+    "issuer": "Google / Coursera",
+    "platform": "Coursera",
+    "date": "Dec 2025",
+    "credentialId": "NFKRJJX9ELAV",
+    "url": "https://www.coursera.org/account/accomplishments/professional-cert/NFKRJJX9ELAV?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof",
+    "category": "Project Management",
+    "featured": true,
+    "skills": [
+      "Project Management",
+      "Agile",
+      "Risk Management",
+      "Stakeholders"
+    ],
+    "image": "https://s3.amazonaws.com/coursera/media/Grid_Coursera_Partners_updated.png",
+    "description": "Learn online and earn valuable credentials from top universities like Yale, Michigan, Stanford, and leading companies like Google and IBM. Join Coursera for free and transform your career with degrees, certificates, Specializations, & MOOCs in data science, computer science, business, and dozens of other topics."
+  },
+  {
+    "title": "Google Business Intelligence Certificate was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Aug 2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/4d593032-7f97-4a4a-a9ef-b9131245f077/linked_in_profile",
+    "category": "Business Intelligence",
+    "featured": true,
+    "skills": [
+      "Business Intelligence",
+      "Dashboards",
+      "Data Visualization",
+      "Decision Support"
+    ],
+    "image": "https://images.credly.com/images/cbe961ef-3536-47a1-be43-14c461a3216e/linkedin_thumb_image.png",
+    "description": "Those who earn the Google Business Intelligence Certificate, developed by Google, have demonstrated their competence in transforming data into actionable insights. Through hands-on activities and assessments, graduates develop proficiency in developing data visualizations and building dashboards that meet stakeholder needs, preparing them for entry-level roles in business intelligence."
+  },
+  {
+    "title": "Google Data Analytics Professional Certificate was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "Aug 2024",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/badges/fcaeacf0-eaf8-46ec-8ccb-12567c799e66/linked_in_profile",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": [
+      "Data Analytics",
+      "SQL",
+      "Spreadsheets",
+      "Visualization"
+    ],
+    "image": "https://images.credly.com/images/d41de2b7-cbc2-47ec-bcf1-ebecbe83872f/linkedin_thumb_GCC_badge_DA_1000x1000.png",
+    "description": "Those who earn the Google Data Analytics Certificate, developed by Google, have demonstrated their competence in foundational data analysis. Through hands-on activities and assessments, graduates develop proficiency in preparing, processing, analyzing, and sharing data using tools and platforms including spreadsheets, SQL, Tableau, and R, preparing them for introductory-level roles in data analytics."
+  },
+  {
+    "title": "Google AI Essentials V1 was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
     "issuer": "Google / Coursera",
     "platform": "Credly",
     "date": "2024",
@@ -118,6 +152,49 @@
     "url": "https://www.credly.com/badges/26f455c6-42b3-4e06-8ef5-cf3fc1fc8088/linked_in_profile",
     "category": "Artificial Intelligence",
     "featured": true,
-    "skills": ["Generative AI", "AI Productivity", "Prompting", "Responsible AI"]
+    "skills": [
+      "Generative AI",
+      "AI Productivity",
+      "Prompting",
+      "Responsible AI"
+    ],
+    "image": "https://images.credly.com/images/ea3eec65-ddad-4242-9c59-1defac0fa2d9/linkedin_thumb_image.png",
+    "description": "Those who earn the Google AI Essentials Certificate, developed by Google, have demonstrated their competence in integrating AI into their work. Through hands-on activities and assessments, graduates develop a foundational understanding of AI principles and practical proficiency in applying generative AI tools to workplace tasks, including writing effective prompts and using AI responsibly."
+  },
+  {
+    "title": "Completion Certificate for The Nuts and Bolts of Machine Learning",
+    "issuer": "Google",
+    "platform": "Coursera",
+    "date": "Mar 2025",
+    "credentialId": "9RWAC44AOJ3S",
+    "url": "https://www.coursera.org/account/accomplishments/verify/9RWAC44AOJ3S",
+    "category": "Artificial Intelligence",
+    "featured": false,
+    "skills": [
+      "Machine Learning",
+      "Model Training",
+      "Supervised Learning",
+      "Unsupervised Learning"
+    ],
+    "image": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~9RWAC44AOJ3S/CERTIFICATE_LANDING_PAGE~9RWAC44AOJ3S.jpeg",
+    "description": "This certificate verifies my successful completion of Google&#x27;s \"The Nuts and Bolts of Machine Learning\" on Coursera"
+  },
+  {
+    "title": "Completion Certificate for Project Planning: Putting It All Together",
+    "issuer": "Google",
+    "platform": "Coursera",
+    "date": "Dec 2025",
+    "credentialId": "YH7J7F27EL50",
+    "url": "https://www.coursera.org/account/accomplishments/verify/YH7J7F27EL50",
+    "category": "Project Management",
+    "featured": false,
+    "skills": [
+      "Planning",
+      "Budgeting",
+      "Risk Management",
+      "Project Execution"
+    ],
+    "image": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~YH7J7F27EL50/CERTIFICATE_LANDING_PAGE~YH7J7F27EL50.jpeg",
+    "description": "This certificate verifies my successful completion of Google&#x27;s \"Project Planning: Putting It All Together\" on Coursera"
   }
 ]
