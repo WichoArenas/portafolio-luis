@@ -1,0 +1,100 @@
+---
+interface Props {
+  locale?: 'en' | 'es';
+}
+
+const { locale = 'en' } = Astro.props;
+const isEs = locale === 'es';
+
+const stack = [
+  'Python',
+  'TensorFlow',
+  'PyTorch',
+  'OpenCV',
+  'YOLO',
+  'MediaPipe',
+  'Astro',
+  'Tailwind CSS',
+  'PostgreSQL',
+  'Firebase',
+  'Arduino',
+  'ESP32',
+  'Jetson',
+  'Raspberry Pi',
+  'KiCad',
+  'GitHub',
+  'Docker',
+  'Linux',
+  'MATLAB',
+  'LaTeX'
+];
+---
+
+<section class="mt-20 overflow-hidden">
+  <div class="border-y border-slate-800 bg-slate-950/50 py-5 relative">
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,#020617,transparent_15%,transparent_85%,#020617)] z-10 pointer-events-none"></div>
+
+    <div class="mb-4 max-w-6xl mx-auto px-6">
+      <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.3em]">
+        {isEs ? 'Stack tecnológico' : 'Technology Stack'}
+      </p>
+    </div>
+
+    <div class="stack-marquee">
+      <div class="stack-track">
+        {[...stack, ...stack].map((item) => (
+          <span class="stack-pill">{item}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .stack-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: stackScroll 32s linear infinite;
+    padding-inline: 1.5rem;
+  }
+
+  .stack-pill {
+    white-space: nowrap;
+    border: 1px solid rgba(51, 65, 85, 0.85);
+    background: rgba(15, 23, 42, 0.82);
+    color: rgb(203, 213, 225);
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.04);
+  }
+
+  .stack-pill:hover {
+    border-color: rgba(34, 211, 238, 0.55);
+    color: rgb(103, 232, 249);
+  }
+
+  @keyframes stackScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>

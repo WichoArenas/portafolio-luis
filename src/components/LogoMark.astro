@@ -1,0 +1,72 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = 'LUIS_ARENAS.DEV' } = Astro.props;
+---
+
+<a href="/portafolio-luis/" class="logo-mark group" aria-label={label}>
+  <span class="logo-symbol">
+    <svg viewBox="0 0 64 64" class="w-9 h-9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 48V14H22V40H36V48H14Z" class="logo-stroke" />
+      <path d="M33 48L46 14L58 48H49L47 42H37L35 48H33Z" class="logo-stroke" />
+      <circle cx="47" cy="34" r="3" class="logo-node" />
+      <path d="M22 40C31 30 37 24 47 34" stroke="currentColor" stroke-width="2" opacity="0.8" />
+      <path d="M10 54C25 58 43 58 58 49" stroke="currentColor" stroke-width="1.5" opacity="0.45" />
+    </svg>
+  </span>
+
+  <span class="logo-text">
+    {label}
+  </span>
+</a>
+
+<style>
+  .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgb(226, 232, 240);
+    text-decoration: none;
+  }
+
+  .logo-symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    border-radius: 0.9rem;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.25), transparent 45%),
+      rgba(2, 6, 23, 0.8);
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.10);
+    padding: 0.35rem;
+  }
+
+  .logo-stroke {
+    fill: rgba(226, 232, 240, 0.92);
+  }
+
+  .logo-node {
+    fill: rgb(34, 211, 238);
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.9));
+  }
+
+  .logo-text {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+  }
+
+  .logo-mark:hover .logo-symbol {
+    border-color: rgba(34, 211, 238, 0.8);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.20);
+  }
+
+  @media (max-width: 640px) {
+    .logo-text {
+      display: none;
+    }
+  }
+</style>

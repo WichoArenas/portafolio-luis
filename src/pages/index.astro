@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import certifications from '../data/certifications.json';
 import PortfolioContact from '../components/PortfolioContact.astro';
 import NeuralResearchBackground from '../components/NeuralResearchBackground.astro';
+import TechStackCarousel from '../components/TechStackCarousel.astro';
+import LogoMark from '../components/LogoMark.astro';
 
 const featuredCertifications = certifications.filter((cert) => cert.featured);
 ---
@@ -12,9 +14,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
   
 
   <nav class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between items-center relative z-10">
-    <a href="/portafolio-luis/" class="text-sm font-bold tracking-[0.25em] text-slate-200 hover:text-cyan-300 transition-colors">
-      LUIS_ARENAS<span class="text-cyan-400">.DEV</span>
-    </a>
+    <LogoMark label="LUIS_ARENAS.DEV" />
 
     <div class="flex flex-wrap gap-3 items-center text-sm">
       <a href="#research" class="text-slate-400 hover:text-cyan-300 transition-colors">Investigación</a>
@@ -171,6 +171,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
       </div>
     </section>
 
+    <TechStackCarousel locale="es" />
 
     <section id="highlight" class="mt-24">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-slate-800 pb-4 mb-10">
@@ -362,7 +363,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
         </article>
 
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-yellow-500/50 transition-all flex flex-col">
-          <div class="h-56 w-full bg-slate-900 relative overflow-hidden drone-radar">
+          <div class="h-64 w-full bg-slate-900 relative overflow-hidden drone-radar">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.20),transparent_40%)]"></div>
             <div class="absolute inset-0 drone-grid"></div>
             <div class="drone-path"><span class="drone-dot">✦</span></div>
@@ -397,7 +398,7 @@ const featuredCertifications = certifications.filter((cert) => cert.featured);
 
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-yellow-500/50 transition-all flex flex-col">
 
-            <div class="h-52 w-full bg-slate-950 relative overflow-hidden">
+            <div class="h-64 w-full bg-slate-950 relative overflow-hidden">
   <video
     class="absolute inset-0 w-full h-full object-cover z-20 opacity-100  group-hover:grayscale-0 transition-all duration-500"
     autoplay
@@ -477,11 +478,29 @@ Segundo lugar en Berkeley. Sistema inteligente de estacionamiento diseñado para
         </article>
 
         <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
-          <div class="h-56 w-full bg-slate-900 relative flex justify-center items-center overflow-hidden">
-            <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/ia-vision.jpg</span>
-            <img src="/portafolio-luis/ia-vision.jpg" alt="Real-time AI integration" class="absolute inset-0 w-full h-full object-cover z-20  group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
-            <div class="absolute inset-0 z-30 pointer-events-none bg-[linear-gradient(115deg,transparent,rgba(6,182,212,0.18),transparent)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-          </div>
+         <div class="h-64 w-full bg-slate-950 relative overflow-hidden">
+  <video
+    class="absolute inset-0 w-full h-full object-cover z-20  group-hover:grayscale-0 transition-all duration-500"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="/portafolio-luis/ia-vision.jpg"
+  >
+    <source src="/portafolio-luis/ai-integration-demo.mp4?v=1" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 z-30 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+
+  <div class="absolute top-3 left-3 z-40 px-3 py-1 rounded-full border border-cyan-500/40 bg-black/70 text-cyan-300 text-xs font-mono">
+    REAL-TIME AI PIPELINE
+  </div>
+
+  <div class="absolute bottom-3 left-3 z-40 px-3 py-1 rounded-full border border-purple-500/40 bg-black/70 text-purple-300 text-xs font-mono">
+    YOLO · OpenCV · Edge Vision
+  </div>
+</div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
               <h3 class="text-xl font-bold text-white mb-2">Integración de IA en tiempo real</h3>
