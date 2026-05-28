@@ -1,374 +1,1506 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import certifications from '../data/certifications.json';
+
+const featuredCertifications = certifications.filter((cert) => cert.featured);
 ---
 
 <Layout>
-  <canvas id="neural-bg" class="fixed top-0 left-0 w-full h-full z-[-1] opacity-20 pointer-events-none"></canvas>
+  <canvas id="neural-bg" class="fixed top-0 left-0 w-full h-full z-[-2] opacity-25 pointer-events-none"></canvas>
+  <div class="fixed inset-0 z-[-3] bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.14),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.12),transparent_35%),#020617]"></div>
 
-  <nav class="max-w-5xl mx-auto px-6 py-8 flex justify-between items-center relative z-10">
-    <div class="flex gap-5 items-center">
-      <a href="https://www.linkedin.com/in/luis-eduardo-arenas-deseano-b97b8aa5/" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-      <a href="https://github.com/WichoArenas" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-      </a>
-      <a href="https://www.instagram.com/thewicholuiz01/" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+  <nav class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between items-center relative z-10">
+    <a href="/portafolio-luis/" class="text-sm font-bold tracking-[0.25em] text-slate-200 hover:text-cyan-300 transition-colors">
+      LUIS_ARENAS<span class="text-cyan-400">.DEV</span>
+    </a>
+
+    <div class="flex flex-wrap gap-3 items-center text-sm">
+      <a href="#research" class="text-slate-400 hover:text-cyan-300 transition-colors">Investigación</a>
+      <a href="#highlight" class="text-slate-400 hover:text-cyan-300 transition-colors">Artículo clave</a>
+      <a href="#projects" class="text-slate-400 hover:text-cyan-300 transition-colors">Proyectos</a>
+      <a href="#credentials" class="text-slate-400 hover:text-cyan-300 transition-colors">Certificaciones</a>
+      <a href="#publications" class="text-slate-400 hover:text-cyan-300 transition-colors">Publicaciones</a>
+      <a href="#contact" class="text-slate-400 hover:text-cyan-300 transition-colors">Contacto</a>
+      <a href="/portafolio-luis/en/" class="ml-2 text-xs font-semibold text-slate-300 hover:text-white border border-slate-700 px-3 py-1.5 rounded-md transition-colors">
+        EN / ES
       </a>
     </div>
-    <a href="/portafolio-luis/en/" class="text-xs font-semibold text-slate-300 hover:text-white border border-slate-700 px-3 py-1.5 rounded-md transition-colors">
-      EN / ES
-    </a>
   </nav>
 
-  <main class="max-w-5xl mx-auto px-6 py-12 relative z-10">
-    
-    <header class="space-y-6">
-      <div class="flex flex-wrap gap-3">
-        <div class="inline-block px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-medium tracking-wide">
-          📍 Estancia de Investigación en Canadá
+  <main class="max-w-6xl mx-auto px-6 py-10 relative z-10">
+    <header class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+      <section class="space-y-6">
+        <div class="flex flex-wrap gap-3">
+          <span class="inline-flex px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-medium tracking-wide">
+            Estancia de investigación en Canadá
+          </span>
+          <span class="inline-flex px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-medium tracking-wide">
+            Consultoría y charlas técnicas disponibles
+          </span>
+          <span class="inline-flex px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium tracking-wide">
+            IA · Visión · Inteligencia embebida
+          </span>
         </div>
-        <div class="inline-block px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-medium tracking-wide">
-          🎙️ Consultoría y Conferencias (Disponible)
+
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white">
+          Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Luis Arenas</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-slate-400 max-w-4xl leading-relaxed">
+          Investigador doctoral y desarrollador tecnológico trabajando en la intersección de
+          <strong class="text-slate-100">visión computacional</strong>,
+          <strong class="text-slate-100">inteligencia artificial</strong>,
+          <strong class="text-slate-100">reconocimiento multimodal de emociones</strong>,
+          <strong class="text-slate-100">sensado inteligente</strong>, and
+          <strong class="text-slate-100">sistemas embebidos en tiempo real</strong>.
+        </p>
+
+        <p class="text-base text-slate-500 max-w-3xl leading-relaxed">
+          Construyo sistemas inteligentes que conectan investigación, hardware, plataformas digitales y estrategia empresarial, transformando modelos técnicos en herramientas prácticas para escenarios académicos, empresariales e institucionales.
+        </p>
+
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a href="#publications" class="px-5 py-3 rounded-xl bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-300 transition-all shadow-[0_0_25px_rgba(6,182,212,0.25)]">
+            Ver publicaciones
+          </a>
+          <a href="#projects" class="px-5 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">
+            Explorar proyectos
+          </a>
+          <a href="https://orcid.org/0009-0006-5247-3629" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl border border-green-500/40 text-green-300 hover:bg-green-500/10 transition-all">
+            Perfil ORCID
+          </a>
         </div>
-      </div>
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white">
-        Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Luis Arenas</span>
-      </h1>
-      
-      <div class="font-mono text-sm sm:text-base text-green-400 bg-black/60 p-4 rounded-lg border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.1)] inline-block">
-        <span class="text-slate-400">root@l-arenas:~$</span> ./analyze_profile.sh <br/>
-        <span class="text-cyan-400">> Extracting key parameters...</span> <br/>
-        <span id="typewriter" class="font-bold text-white"></span><span class="animate-pulse">_</span>
+      </section>
+
+      <aside class="rounded-2xl border border-green-500/30 bg-black/75 p-5 font-mono text-sm shadow-[0_0_35px_rgba(34,197,94,0.10)] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none terminal-grid"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+            <span class="ml-2 text-slate-500">terminal-investigación</span>
+          </div>
+
+          <p><span class="text-slate-500">luis@portfolio:~$</span> ./scan_profile --public</p>
+          <p class="text-cyan-400 mt-2">&gt; Cargando identidad de investigación...</p>
+          <p class="text-green-400">&gt; Construyendo capa dinámica de publicaciones...</p>
+          <p class="text-purple-300">&gt; Verificando metadatos ORCID + DOI...</p>
+          <p class="text-slate-300 mt-4"><span id="typewriter" class="font-bold text-white"></span><span class="animate-pulse">_</span></p>
+
+          <div class="mt-5 rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+            <p class="text-slate-500 mb-2">live_status.log</p>
+            <p id="terminal-status" class="text-cyan-300">Inicializando perfil científico...</p>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+            <div class="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-3">
+              <p class="text-slate-500 uppercase tracking-widest">Modo</p>
+              <p class="text-cyan-300 font-bold mt-1">Académico + Empresarial</p>
+            </div>
+            <div class="rounded-xl border border-purple-500/20 bg-purple-500/5 p-3">
+              <p class="text-slate-500 uppercase tracking-widest">Nodo</p>
+              <p class="text-purple-300 font-bold mt-1">INAOE + UBCO</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="research" class="mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4 mb-10">
+        <div>
+          <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.3em] mb-2">Identidad de investigación</p>
+          <h2 class="text-3xl font-bold text-white">Consola de investigación e innovación</h2>
+        </div>
+        <p class="text-slate-500 max-w-2xl">
+          Un perfil académico vivo: áreas de investigación, proyectos, publicaciones, señales de citas y enlaces originales en un solo lugar.
+        </p>
       </div>
 
-      <p class="text-xl md:text-2xl text-slate-400 max-w-3xl leading-relaxed mt-4">
-        Investigador y desarrollador enfocado en <strong class="text-slate-200">Visión por Computadora</strong>, <strong class="text-slate-200">Inteligencia Artificial</strong> y hardware aplicado. Desarrollo modelos de negocio empresariales e institucionales, haciéndolos más eficientes y enfocados a su visión y misión mediante la integración estratégica de plataformas digitales y algoritmos avanzados.
-      </p>
-    </header>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-cyan-500/50 transition-all">
+            <p class="text-cyan-400 font-mono text-sm mb-3">01</p>
+            <h3 class="text-xl font-bold text-white mb-2">Reconocimiento de emociones sensible al contexto</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Fusión contextual de estilo bayesiano, priors de escena, suavizado temporal y análisis facial de emociones en tiempo real.</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-blue-500/50 transition-all">
+            <p class="text-blue-400 font-mono text-sm mb-3">02</p>
+            <h3 class="text-xl font-bold text-white mb-2">Transformers multimodales</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Fusión imagen/audio, atención cruzada, inferencia consciente del hardware y pipelines experimentales para reconocimiento de emociones.</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-purple-500/50 transition-all">
+            <p class="text-purple-400 font-mono text-sm mb-3">03</p>
+            <h3 class="text-xl font-bold text-white mb-2">IA embebida y sensado inteligente</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Monitoreo IoT, microcontroladores, dispositivos edge, tableros en la nube y despliegue en tiempo real.</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-emerald-500/50 transition-all">
+            <p class="text-emerald-400 font-mono text-sm mb-3">04</p>
+            <h3 class="text-xl font-bold text-white mb-2">Estrategia de IA orientada a negocio</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Plataformas digitales y flujos de IA alineados con eficiencia operativa, misión y objetivos institucionales de largo plazo.</p>
+          </article>
+        </div>
+
+        <article class="rounded-2xl border border-cyan-500/20 bg-slate-950/70 p-6 relative overflow-hidden min-h-[330px]">
+          <div class="absolute inset-0 opacity-25 pointer-events-none algorithm-field"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.3em] mb-3">Núcleo dinámico del perfil</p>
+            <h3 class="text-2xl font-bold text-white mb-4">Características principales del perfil</h3>
+            <div id="profile-feature-board" class="space-y-3">
+              <div class="rounded-xl border border-slate-800 bg-black/40 p-4">
+                <p class="text-slate-500 text-xs uppercase tracking-widest">Capacidad central</p>
+                <p class="text-cyan-300 font-mono mt-1">Investigador en visión computacional</p>
+              </div>
+              <div class="rounded-xl border border-slate-800 bg-black/40 p-4">
+                <p class="text-slate-500 text-xs uppercase tracking-widest">Dirección aplicada</p>
+                <p class="text-purple-300 font-mono mt-1">IA + Hardware + Estrategia</p>
+              </div>
+              <div class="rounded-xl border border-slate-800 bg-black/40 p-4">
+                <p class="text-slate-500 text-xs uppercase tracking-widest">Enfoque actual</p>
+                <p id="live-focus" class="text-green-300 font-mono mt-1">Inteligencia multimodal sensible al contexto</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section id="highlight" class="mt-24">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-slate-800 pb-4 mb-10">
+        <div>
+          <p class="text-xs font-bold text-purple-400 uppercase tracking-[0.3em] mb-2">Artículo destacado</p>
+          <h2 class="text-3xl font-bold text-white">A Probabilistic Framework for Reconocimiento facial de emociones con contexto de escena</h2>
+        </div>
+        <p class="text-slate-500 max-w-2xl">
+          Un marco dual en tiempo real que integra el contexto de escena como prior probabilístico explícito para el reconocimiento facial de emociones.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8">
+        <article class="rounded-3xl border border-purple-500/25 bg-gradient-to-br from-purple-500/10 via-slate-950/80 to-cyan-500/10 p-6 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-25 pointer-events-none research-orbit"></div>
+          <div class="relative z-10">
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="pub-badge bg-purple-500/20 text-purple-300 border-purple-500/30">ACEPTADO · EN PRODUCCIÓN</span>
+              <span class="pub-badge bg-cyan-500/10 text-cyan-300 border-cyan-500/30">EDGE-READY AI</span>
+              <span class="pub-badge bg-green-500/10 text-green-300 border-green-500/30">BCPF FUSION</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white mb-4">El contexto como prior probabilístico</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              El marco combina una rama de emoción facial con una rama de contexto de escena. La rama contextual estima siete entornos sociales y usa el posterior resultante como prior para reponderar las probabilidades emocionales, reduciendo asignaciones emoción-contexto poco plausibles y preservando el comportamiento en tiempo real.
+            </p>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="metric-chip">
+                <p class="metric-value">7</p>
+                <p class="metric-label">Contextos de escena</p>
+              </div>
+              <div class="metric-chip">
+                <p class="metric-value">6</p>
+                <p class="metric-label">Clases emocionales</p>
+              </div>
+              <div class="metric-chip">
+                <p class="metric-value">30+</p>
+                <p class="metric-label">Objetivo FPS</p>
+              </div>
+              <div class="metric-chip">
+                <p class="metric-value">PSC</p>
+                <p class="metric-label">IDC · ISR · VSC</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Segmentación YOLO</span>
+              <span class="tag">MobileNetV2</span>
+              <span class="tag">Suavizado temporal</span>
+              <span class="tag">Fusión contextual bayesiana</span>
+              <span class="tag">Jetson / Raspberry Pi</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-slate-800 bg-slate-950/80 p-6 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-20 pointer-events-none algorithm-field"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.3em] mb-4">Concepto visual de fusión</p>
+            <div class="space-y-4">
+              <div class="pipeline-node border-cyan-500/30">
+                <span class="node-index text-cyan-300">01</span>
+                <div>
+                  <h4 class="node-title">Rama facial</h4>
+                  <p class="node-text">Una CNN ligera estima un posterior facial de seis emociones.</p>
+                </div>
+              </div>
+              <div class="pipeline-node border-purple-500/30">
+                <span class="node-index text-purple-300">02</span>
+                <div>
+                  <h4 class="node-title">Rama de escena</h4>
+                  <p class="node-text">Enmascaramiento con YOLO y MobileNetV2 clasifican el contexto social.</p>
+                </div>
+              </div>
+              <div class="pipeline-node border-green-500/30">
+                <span class="node-index text-green-300">03</span>
+                <div>
+                  <h4 class="node-title">Matriz de prior contextual</h4>
+                  <p class="node-text">Pctx convierte la probabilidad de escena en un prior de compatibilidad afectiva.</p>
+                </div>
+              </div>
+              <div class="pipeline-node border-blue-500/30">
+                <span class="node-index text-blue-300">04</span>
+                <div>
+                  <h4 class="node-title">Salida BCPF</h4>
+                  <p class="node-text">Una compuerta de confianza evita sobrecorrecciones cuando el contexto es incierto.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-slate-800 bg-black/50 p-4">
+              <div class="flex justify-between text-xs text-slate-500 mb-2"><span>Ambigüedad solo facial</span><span>Confianza fusionada</span></div>
+              <div class="fusion-track"><span class="fusion-bar face-bar"></span></div>
+              <div class="fusion-track mt-3"><span class="fusion-bar context-bar"></span></div>
+              <div class="fusion-track mt-3"><span class="fusion-bar output-bar"></span></div>
+              <div class="grid grid-cols-3 gap-2 mt-3 text-[10px] uppercase tracking-widest text-slate-500">
+                <span>Rostro</span><span>Contexto</span><span>Salida</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <section class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>
-        <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          Experiencia y Estrategia
-        </h2>
+        <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-3">Experiencia y estrategia</h2>
         <div class="space-y-8">
           <div class="relative pl-4 border-l border-slate-800 hover:border-cyan-500/50 transition-colors">
-            <span class="text-xs font-mono text-cyan-400">2026 - Presente</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Investigador Visitante</h3>
+            <span class="text-xs font-mono text-cyan-400">2026 - Present</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Investigador visitante</h3>
             <p class="text-sm text-slate-400 font-medium">University of British Columbia Okanagan</p>
-            <p class="text-slate-400 text-sm mt-2 leading-relaxed">Estancia internacional en convergencia de IA, sistemas autónomos y control de hardware en tiempo real.</p>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">Estancia internacional de investigación enfocada en IA, sistemas autónomos, sensado e integración hardware/software en tiempo real.</p>
           </div>
-          <div class="relative pl-4 border-l border-slate-800 hover:border-cyan-500/50 transition-colors">
-            <span class="text-xs font-mono text-cyan-400">2023 - Presente</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Profesor Universitario & Consultor</h3>
-            <p class="text-sm text-slate-400 font-medium">Docencia y Asesoría Tecnológica</p>
-            <p class="text-slate-400 text-sm mt-2 leading-relaxed">Impartición de cátedras sobre Elementos Programables. Adicionalmente, estructuración de estrategias digitales para eficiencia operativa empresarial.</p>
+          <div class="relative pl-4 border-l border-slate-800 hover:border-purple-500/50 transition-colors">
+            <span class="text-xs font-mono text-purple-400">2023 - Present</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Profesor universitario y consultor tecnológico</h3>
+            <p class="text-sm text-slate-400 font-medium">Docencia, tecnología aplicada y estrategia digital</p>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">Diseño de cursos técnicos y asesoría en soluciones tecnológicas para mejorar la eficiencia operativa mediante IA, plataformas digitales y automatización.</p>
           </div>
         </div>
       </div>
 
       <div>
-        <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-          Educación
-        </h2>
+        <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-3">Formación académica</h2>
         <div class="space-y-8">
           <div class="relative pl-4 border-l border-slate-800 hover:border-blue-500/50 transition-colors">
-            <span class="text-xs font-mono text-blue-400">En Curso (Graduación Dic 2027)</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Doctorado en Ciencias en Electrónica</h3>
+            <span class="text-xs font-mono text-blue-400">En curso · Estimado dic. 2027</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Doctorado en Ciencias de la Electrónica</h3>
             <p class="text-sm text-slate-400 font-medium">INAOE</p>
           </div>
           <div class="relative pl-4 border-l border-slate-800 hover:border-blue-500/50 transition-colors">
-            <span class="text-xs font-mono text-slate-500">Completado</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Maestría en Ciencias en Electrónica</h3>
+            <span class="text-xs font-mono text-slate-500">Concluido</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Maestría en Ciencias de la Electrónica</h3>
             <p class="text-sm text-slate-400 font-medium">INAOE</p>
           </div>
           <div class="relative pl-4 border-l border-slate-800 hover:border-blue-500/50 transition-colors">
-            <span class="text-xs font-mono text-slate-500">Completado</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Ingeniería en Mecatrónica</h3>
+            <span class="text-xs font-mono text-slate-500">Concluido</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Licenciatura en Ingeniería Mecatrónica</h3>
             <p class="text-sm text-slate-400 font-medium">Universidad Iberoamericana Puebla</p>
           </div>
           <div class="relative pl-4 border-l border-slate-800 hover:border-blue-500/50 transition-colors">
-            <span class="text-xs font-mono text-slate-500">Completado</span>
-            <h3 class="text-lg font-bold text-slate-200 mt-1">Ing. en Comunicaciones y Electrónica</h3>
+            <span class="text-xs font-mono text-slate-500">Concluido</span>
+            <h3 class="text-lg font-bold text-slate-200 mt-1">Licenciatura en Ingeniería en Comunicaciones y Electrónica</h3>
             <p class="text-sm text-slate-400 font-medium">Universidad Iberoamericana Puebla</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="proyectos" class="mt-24">
-      <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-800 pb-4">Desarrollo Tecnológico y Proyectos</h2>
-      
+    <section id="projects" class="mt-24">
+      <div class="border-b border-slate-800 pb-4 mb-10">
+        <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.3em] mb-2">Sistemas desarrollados</p>
+        <h2 class="text-3xl font-bold text-white">Desarrollo tecnológico y proyectos</h2>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col md:col-span-2">
-          <div class="h-64 w-full bg-slate-800 relative flex justify-center items-center overflow-hidden">
-            <span class="absolute z-10 text-slate-500 font-mono text-sm">[ Sube 'satellite.jpg' a public ]</span>
-            <img src="/portafolio-luis/satellite.jpg" alt="Satellite Scan" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent w-full h-full z-30 animate-[scan_3s_ease-in-out_infinite] opacity-50 pointer-events-none"></div>
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col md:col-span-2">
+          <div class="h-72 w-full bg-slate-900 relative flex justify-center items-center overflow-hidden">
+            <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/satellite.jpg</span>
+            <img src="/portafolio-luis/satellite.jpg" alt="Satellite scan model preview" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+            <div class="absolute inset-0 z-30 bg-gradient-to-b from-transparent via-cyan-500/25 to-transparent animate-[scan_3.2s_ease-in-out_infinite] pointer-events-none"></div>
+            <div class="absolute inset-0 z-30 satellite-grid pointer-events-none"></div>
           </div>
           <div class="p-6">
-            <div class="flex items-center gap-2 mb-2">
-              <h3 class="text-2xl font-bold text-white">Escaneo Satelital en Tiempo Real</h3>
-              <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-red-500/20 text-red-400 border border-red-500/30">Nivel Gubernamental & Académico</span>
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <h3 class="text-2xl font-bold text-white">Escaneo satelital en tiempo real</h3>
+              <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-red-500/20 text-red-300 border border-red-500/30">Nivel gubernamental y académico</span>
             </div>
-            <p class="text-slate-400 text-sm mb-4 max-w-4xl">Desarrollo de algoritmos de procesamiento de imágenes satelitales en tiempo real. Este modelo de alta complejidad matemática está diseñado para aplicaciones de inteligencia territorial, monitoreo ambiental y seguridad para entidades académicas y de gobierno.</p>
+            <p class="text-slate-400 text-sm mb-4 max-w-4xl leading-relaxed">Desarrollo de algoritmos de procesamiento de imágenes satelitales en tiempo real para inteligencia territorial, monitoreo ambiental, análisis orientado a seguridad y aplicaciones académicas/gubernamentales.</p>
             <div class="flex gap-2 flex-wrap">
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Algoritmos de Escaneo</span>
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Teledetección</span>
+              <span class="tag">Algoritmos de escaneo</span>
+              <span class="tag">Percepción remota</span>
+              <span class="tag">Procesamiento en tiempo real</span>
+              <span class="tag">Inteligencia territorial</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
-          <div class="h-48 w-full bg-slate-800 relative flex justify-center items-center">
-            <span class="absolute z-10 text-slate-500 font-mono text-sm">[ Sube 'drone.jpg' a public ]</span>
-            <img src="/portafolio-luis/drone.jpg" alt="Autonomous Drone" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-yellow-500/50 transition-all flex flex-col">
+          <div class="h-56 w-full bg-slate-900 relative overflow-hidden drone-radar">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.20),transparent_40%)]"></div>
+            <div class="absolute inset-0 drone-grid"></div>
+            <div class="drone-path"><span class="drone-dot">✦</span></div>
+            <video
+  class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-75 transition-opacity duration-500"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  poster="/portafolio-luis/drone.jpg"
+>
+  <source src="/portafolio-luis/drone-demo.mp4?v=99" type="video/mp4" />
+</video>
+            <div class="absolute bottom-4 left-4 right-4 z-20 text-xs font-mono text-purple-200/80">tracking.init(target='aerial_object', mode='research')</div>
           </div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-2">Sistemas Aéreos y Drones Autónomos</h3>
-              <p class="text-slate-400 text-sm mb-4">Desarrollo de sistemas de navegación autónoma y algoritmos de control aplicados a entornos empresariales y de investigación. Operación aérea respaldada por certificación oficial de Piloto de Drones de Transport Canada.</p>
-            </div>
-            <div class="flex gap-2 flex-wrap">
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Autonomía</span>
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Control GCS</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
-          <div class="h-48 w-full bg-slate-800 relative flex justify-center items-center overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=800&auto=format&fit=crop" alt="Smart Parkade" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500" />
-          </div>
-          <div class="p-6 flex-grow flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2">
-                <h3 class="text-xl font-bold text-white">Smart Parkade System</h3>
-                <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Berkeley 2nd Place</span>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <h3 class="text-xl font-bold text-white">Sistemas aéreos y drones autónomos</h3>
+                <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">Académico + Empresarial</span>
               </div>
-              <p class="text-slate-400 text-sm mb-4">Sistema de estacionamiento inteligente reconocido en competencia en Berkeley. Optimiza la logística de espacios utilizando sensores en tiempo real para mejorar la eficiencia del modelo de negocio.</p>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">Operación de drones autónomos, lógica de navegación, seguimiento en tiempo real y pipelines de control con visión computacional para investigación, pruebas de campo y sistemas aéreos orientados a empresas.</p>
             </div>
             <div class="flex gap-2 flex-wrap">
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Smart City</span>
-              <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Optimización</span>
+              <span class="tag">Navegación autónoma</span>
+              <span class="tag">Control GCS</span>
+              <span class="tag">Seguimiento en tiempo real</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-yellow-500/50 transition-all flex flex-col">
+
+            <div class="h-52 w-full bg-slate-950 relative overflow-hidden">
+  <video
+    class="absolute inset-0 w-full h-full object-cover z-20 opacity-100 grayscale group-hover:grayscale-0 transition-all duration-500"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source src="/portafolio-luis/parkade-demo-h264.mp4?v=1" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 z-30 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+
+  <div class="absolute top-3 left-3 z-40 px-3 py-1 rounded-full border border-yellow-500/40 bg-black/70 text-yellow-300 text-xs font-mono">
+    BERKELEY 2ND PLACE
+  </div>
+
+  <div class="absolute bottom-3 left-3 z-40 px-3 py-1 rounded-full border border-cyan-500/40 bg-black/70 text-cyan-300 text-xs font-mono">
+    VISUALIZACIÓN IA DE OCUPACIÓN DE ESTACIONAMIENTO
+  </div>
+</div>
+
+         <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <h3 class="text-xl font-bold text-white">Sistema Smart Parkade</h3>
+                <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">Segundo lugar en Berkeley</span>
+              </div>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed"> Sistema Smart Parkade
+
+Segundo lugar en Berkeley. Sistema inteligente de estacionamiento diseñado para optimizar disponibilidad de espacios, flujo vehicular y toma de decisiones operativas mediante sensado en tiempo real, detección de ocupación y visualización asistida por IA. </p>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <span class="tag">Ciudad inteligente</span>
+              <span class="tag">IA para estacionamientos</span>
+              <span class="tag">Optimización</span>
+              <span class="tag">Sensado en tiempo real</span>
+              <span class="tag">Eficiencia empresarial</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
           <div class="aspect-video w-full bg-black">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/DExxQR5RKNM" title="MARKUS Robot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/DExxQR5RKNM" title="Robot MARKUS demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-2">The Robot MARKUS</h3>
-              <p class="text-slate-400 text-sm mb-4">Diseño de robot de servicio orientado a la optimización de atención en negocios.</p>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <h3 class="text-xl font-bold text-white">Robot MARKUS</h3>
+                <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">Premiado</span>
+              </div>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">Proyecto de robot de servicio enfocado en optimización de atención al cliente, lógica embebida, sensado y robótica aplicada para entornos empresariales.</p>
             </div>
-            <div class="flex gap-4 items-center mt-2">
-              <a href="https://www.hackster.io/" target="_blank" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1">Ver en Hackster <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
-            </div>
+            <a href="https://www.hackster.io/TheWichoLuiz/the-robot-markus-for-your-business-7bdef2" target="_blank" rel="noopener noreferrer" class="project-link">Ver en Hackster &rarr;</a>
           </div>
-        </div>
+        </article>
 
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
-          <div class="h-48 w-full bg-slate-800 relative flex justify-center items-center">
-            <span class="absolute z-10 text-slate-500 font-mono text-sm">[ Sube 'saqms.jpg' a public ]</span>
-            <img src="/portafolio-luis/saqms.jpg" alt="SAQMS" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-blue-500/50 transition-all flex flex-col">
+          <div class="h-56 w-full bg-slate-800 relative flex justify-center items-center">
+            <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/saqms.jpg</span>
+            <img src="/portafolio-luis/saqms.jpg" alt="SAQMS environmental monitoring system" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
           </div>
           <div class="p-6 flex-grow flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-2">SAQMS & School Warden</h3>
-              <p class="text-slate-400 text-sm mb-4">Evolución de monitoreo ambiental escolar a un sistema empresarial con Firebase y Machine Learning (ARIMA).</p>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <h3 class="text-xl font-bold text-white">SAQMS & School Warden</h3>
+                <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">IEEE + Hackster</span>
+              </div>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">Evolución desde un prototipo educativo de sensado ambiental hacia una plataforma inteligente de calidad del aire con Firebase, tableros, pronóstico y monitoreo IoT.</p>
             </div>
-            <div class="flex gap-4 items-center mt-2">
-              <a href="https://www.hackster.io/" target="_blank" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1">Ver Warden en Hackster <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://ieeexplore.ieee.org/document/11482784" target="_blank" rel="noopener noreferrer" class="project-link">IEEE Xplore &rarr;</a>
+              <a href="https://www.hackster.io/school-warden/arduino-sigfox-school-warden-to-monitor-the-environment-54438c" target="_blank" rel="noopener noreferrer" class="project-link">School Warden &rarr;</a>
             </div>
           </div>
-        </div>
+        </article>
 
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
+          <div class="h-56 w-full bg-slate-900 relative flex justify-center items-center overflow-hidden">
+            <span class="absolute z-10 text-slate-500 font-mono text-sm">Upload: /public/ia-vision.jpg</span>
+            <img src="/portafolio-luis/ia-vision.jpg" alt="Real-time AI integration" class="absolute inset-0 w-full h-full object-cover z-20 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-0 hover:opacity-100" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none';" />
+            <div class="absolute inset-0 z-30 pointer-events-none bg-[linear-gradient(115deg,transparent,rgba(6,182,212,0.18),transparent)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Integración de IA en tiempo real</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">Despliegue de modelos de visión computacional en plataformas embebidas, integrando flujos de cámara, optimización de modelos, control de hardware y comportamiento en tiempo real.</p>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <span class="tag">Visión computacional</span>
+              <span class="tag">IA embebida</span>
+              <span class="tag">Lógica de firmware</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col">
+  <div class="relative h-64 w-full bg-slate-950 overflow-hidden pcb-panel">
+    
+    <img
+      src="/portafolio-luis/pcb-board.png"
+      alt="Custom PCB design for embedded systems"
+      class="absolute inset-0 w-full h-full object-cover z-10 pcb-image"
+    />
+
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 z-20 bg-gradient-to-t from-black/75 via-black/15 to-transparent pointer-events-none"></div>
+
+    <!-- Scan line -->
+    <div class="absolute inset-0 z-30 pointer-events-none overflow-hidden">
+      <div class="pcb-scan-line"></div>
+    </div>
+
+    <!-- Glow points -->
+    <div class="absolute top-[18%] left-[58%] z-30 pcb-node"></div>
+    <div class="absolute top-[70%] left-[47%] z-30 pcb-node pcb-node-delay-1"></div>
+    <div class="absolute top-[80%] left-[52%] z-30 pcb-node pcb-node-delay-2"></div>
+    <div class="absolute top-[28%] left-[80%] z-30 pcb-node pcb-node-delay-3"></div>
+
+    <!-- Tech labels -->
+    <div class="absolute top-4 left-4 z-40 px-3 py-1 rounded-full border border-cyan-500/30 bg-black/60 text-cyan-300 text-[11px] font-mono tracking-wider">
+      EMBEDDED PCB
+    </div>
+
+    <div class="absolute bottom-5 left-5 z-40 space-y-2">
+      <div class="px-2.5 py-1 rounded-md border border-slate-700 bg-black/60 text-slate-200 text-[11px] font-mono inline-block">
+        MCU NODE
+      </div>
+      <div class="px-2.5 py-1 rounded-md border border-slate-700 bg-black/60 text-slate-200 text-[11px] font-mono inline-block">
+        USB-C INTERFACE
+      </div>
+      <div class="px-2.5 py-1 rounded-md border border-slate-700 bg-black/60 text-slate-200 text-[11px] font-mono inline-block">
+        RESET / BOOT LOGIC
+      </div>
+    </div>
+  </div>
+
+  <div class="p-6 flex-grow flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-2 mb-2 flex-wrap">
+        <h3 class="text-xl font-bold text-white">Diseño electrónico y sistemas embebidos</h3>
+        <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+          Hardware + Firmware
+        </span>
+      </div>
+
+      <p class="text-slate-400 text-sm leading-relaxed mb-4">
+        Diseño e integración de plataformas electrónicas embebidas para sistemas inteligentes, incluyendo flujos de trabajo orientados a PCB, lógica de firmware, interfaces de sensores, etapas de potencia y sincronización hardware/software en tiempo real.
+      </p>
+    </div>
+
+    <div class="flex gap-2 flex-wrap">
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Diseño PCB</span>
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Sistemas embebidos</span>
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Firmware</span>
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Sensores</span>
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Integración de hardware</span>
+      <span class="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300">Edge AI</span>
+    </div>
+  </div>
+</article>
       </div>
     </section>
 
-    <section id="publicaciones" class="mt-24 mb-24">
-      <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-800 pb-4 flex items-center gap-3">
-        <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-        Publicaciones Científicas
-      </h2>
+
+    <section id="credentials" class="mt-24">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-slate-800 pb-4 mb-10">
+    <div>
+      <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.3em] mb-2">Capa de aprendizaje verificado</p>
+      <h2 class="text-3xl font-bold text-white">Credenciales y certificaciones verificadas</h2>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 w-full lg:w-auto">
+      <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+        <p class="text-2xl font-bold text-white">{certifications.length}</p>
+        <p class="text-[10px] uppercase tracking-widest text-slate-500">Credenciales</p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+        <p class="text-2xl font-bold text-cyan-300">AI</p>
+        <p class="text-[10px] uppercase tracking-widest text-slate-500">Línea central</p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+        <p class="text-2xl font-bold text-purple-300">PM</p>
+        <p class="text-[10px] uppercase tracking-widest text-slate-500">Estrategia</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-slate-500 text-sm mb-8 max-w-4xl leading-relaxed">
+    Conjunto curado de credenciales verificadas que conectan inteligencia artificial, analítica de datos, inteligencia de negocios, gestión de proyectos, automatización y desarrollo técnico orientado a edge.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+    {featuredCertifications.map((cert) => (
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 hover:border-emerald-500/50 transition-all relative overflow-hidden">
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.35),transparent_35%)]"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <span class="inline-flex px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                {cert.platform}
+              </span>
+              <span class="inline-flex ml-2 px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-slate-800 text-slate-300 border border-slate-700">
+                {cert.category}
+              </span>
+            </div>
+            <span class="text-xs font-mono text-slate-500">{cert.date}</span>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+            {cert.title}
+          </h3>
+
+          <p class="text-sm text-slate-400 mt-2">{cert.issuer}</p>
+
+          <p class="text-xs text-slate-500 mt-2">
+            ID de credencial: {cert.credentialId}
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            {cert.skills.map((skill) => (
+              <span class="tag">{skill}</span>
+            ))}
+          </div>
+
+          <a
+            href={cert.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex mt-5 text-sm font-semibold text-emerald-300 hover:text-emerald-200 transition-colors"
+          >
+            Verificar credencial &rarr;
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+    <section class="mt-24 rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-black/80 p-8 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20 pointer-events-none business-lines"></div>
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 items-center">
+        <div>
+          <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.3em] mb-2">Traducción investigación + negocio</p>
+          <h2 class="text-3xl font-bold text-white mb-4">Estrategia impulsada por IA para eficiencia institucional y empresarial</h2>
+          <p class="text-slate-400 leading-relaxed">Más allá de los prototipos de investigación, diseño modelos de negocio impulsados por tecnología que mejoran la eficiencia operativa y alinean plataformas digitales, herramientas de IA y flujos de automatización con la misión y visión estratégica de cada organización.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-slate-800 bg-black/40 p-5">
+            <p class="text-2xl font-bold text-cyan-300">01</p>
+            <p class="text-white font-semibold mt-2">Mapeo operativo</p>
+            <p class="text-xs text-slate-500 mt-2">Entender procesos y cuellos de botella.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-black/40 p-5">
+            <p class="text-2xl font-bold text-purple-300">02</p>
+            <p class="text-white font-semibold mt-2">Diseño de plataformas digitales</p>
+            <p class="text-xs text-slate-500 mt-2">Conectar personas, datos y flujos de trabajo.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-black/40 p-5">
+            <p class="text-2xl font-bold text-emerald-300">03</p>
+            <p class="text-white font-semibold mt-2">Integración de IA</p>
+            <p class="text-xs text-slate-500 mt-2">Desplegar automatización y decisiones inteligentes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="mt-24">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-slate-800 pb-4 mb-8">
+        <div>
+          <p class="text-xs font-bold text-green-400 uppercase tracking-[0.3em] mb-2">Capa académica dinámica</p>
+          <h2 class="text-3xl font-bold text-white">Publicaciones científicas</h2>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 w-full lg:w-auto">
+          <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+            <p id="metric-publications" class="text-2xl font-bold text-white">—</p>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500">Indexadas</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+            <p id="metric-citations" class="text-2xl font-bold text-white">—</p>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500">Citas</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-center">
+            <p id="metric-updated" class="text-sm font-mono text-cyan-300">Live</p>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500">Sincronización</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-slate-500 text-sm mb-8 max-w-4xl leading-relaxed">
+        Las publicaciones combinan registros curados con una capa dinámica de ORCID. Los indicadores de citas se obtienen mediante metadatos por DOI cuando están disponibles, por lo que pueden diferir de Google Scholar, IEEE o páginas editoriales.
+      </p>
 
       <div class="space-y-4 mb-10">
-        <div class="p-6 rounded-xl border-2 border-blue-500/30 bg-blue-900/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">IEEE I&M Magazine</span>
+        <article class="p-6 rounded-xl border-2 border-blue-500/30 bg-blue-900/10 hover:bg-blue-900/20 transition-colors group">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <span class="pub-badge bg-blue-500/20 text-blue-300 border-blue-500/30">IEEE I&M MAGAZINE</span>
+                <span class="text-sm font-mono text-slate-400">2026</span>
+                <span id="citation-ieee-saqms" class="pub-badge bg-green-500/10 text-green-300 border-green-500/20">Citas: —</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Formación académica in I&M: Smart Air Quality Monitoring System — A Student Project</h3>
+              <p class="text-sm text-slate-400 mt-1">L. E. Arenas-Deseano, J. M. Ramirez-Cortes, P. Gomez-Gil</p>
+              <p class="text-xs text-slate-500 mt-2">DOI: 10.1109/MIM.2026.11224834</p>
             </div>
-            <h3 class="text-xl font-bold text-white">Smart Air Quality Monitoring System - a Student Project</h3>
-            <p class="text-sm text-slate-400 mt-1">L. E. Arenas-Deseano, et al.</p>
-          </div>
-          <a href="https://ieeexplore.ieee.org/document/11482784" target="_blank" class="shrink-0 px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors">Ver en IEEE Xplore</a>
-        </div>
 
-        <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-slate-800 text-slate-300 border border-slate-700">Revista Latinoamericana</span>
+            <div class="flex flex-wrap gap-2 md:justify-end">
+              <a href="https://ieeexplore.ieee.org/document/11482784" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors">IEEE Xplore</a>
+              <a href="https://doi.org/10.1109/MIM.2026.11224834" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-300 transition-colors">DOI</a>
             </div>
-            <h3 class="text-xl font-bold text-slate-200">Artículo Publicado en Revista Latinoamericana</h3>
-            <p class="text-sm text-slate-400 mt-1">L. E. Arenas-Deseano</p>
           </div>
-        </div>
+        </article>
 
-        <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">En Preparación / In Prep</span>
+        <article class="p-6 rounded-xl border border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 transition-colors">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <span class="pub-badge bg-cyan-500/10 text-cyan-300 border-cyan-500/30">REVISTA LATINOAMERICANA · NOTICIEEEERO</span>
+                <span class="text-sm font-mono text-slate-500">Magazine / Outreach</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-200">Publicación en Revista Latinoamericana</h3>
+              <p class="text-sm text-slate-400 mt-1">Registro regional de divulgación vinculado al número original en Calaméo.</p>
             </div>
-            <h3 class="text-xl font-bold text-slate-200">Context-Aware Emotion Classification</h3>
-            <p class="text-sm text-slate-400 mt-1">Investigación en desarrollo sobre modelos de visión por computadora sensibles al contexto.</p>
+            <a href="https://www.calameo.com/read/007124124de34efadd8c4" target="_blank" rel="noopener noreferrer" class="shrink-0 px-4 py-2 text-sm font-medium rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition-colors">Abrir NOTICIEEEERO</a>
           </div>
+        </article>
+
+        <article id="pending-accepted-paper" data-pending-title="probabilistic framework scene-context facial emotion recognition" class="p-6 rounded-xl border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/15 transition-colors">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <span class="pub-badge bg-purple-500/20 text-purple-300 border-purple-500/30">ACEPTADO · EN PRODUCCIÓN</span>
+                <span class="text-sm font-mono text-slate-500">En espera de indexación oficial</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-200">A Probabilistic Framework for Reconocimiento facial de emociones con contexto de escena</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Marco dual en tiempo real que incorpora el contexto de escena como prior probabilístico explícito para el reconocimiento facial de emociones, usando aislamiento de escena con YOLO, clasificación contextual con MobileNetV2, fusión probabilística bayesiana-contextual, suavizado temporal e indicadores de sesgo contextual.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">Fusión contextual bayesiana</span>
+                <span class="tag">MobileNetV2</span>
+                <span class="tag">Segmentación YOLO</span>
+                <span class="tag">PSC / IDC / ISR / VSC</span>
+                <span class="tag">Real-Time FER</span>
+                <span class="tag">Edge AI</span>
+              </div>
+            </div>
+            <span class="shrink-0 px-4 py-2 text-sm font-medium rounded-lg border border-purple-500/40 text-purple-300">Enlace oficial pendiente</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-slate-800 pt-8 mb-5">
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Historial dinámico vía ORCID</h3>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://ieeexplore.ieee.org/author/395576129474048" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">Perfil de autor IEEE &rarr;</a>
+          <a href="https://orcid.org/0009-0006-5247-3629" target="_blank" rel="noopener noreferrer" class="text-sm text-green-400 hover:text-green-300 transition-colors">Perfil ORCID completo &rarr;</a>
         </div>
       </div>
-      
-      <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 border-t border-slate-800 pt-8">Historial Dinámico (Vía ORCID)</h3>
+
       <div id="orcid-publications" class="space-y-4">
-        <p class="text-slate-500 animate-pulse">Consultando la base de datos de ORCID...</p>
+        <p class="text-slate-500 animate-pulse">Consultando registro público ORCID...</p>
       </div>
-      
     </section>
 
-    <section class="mt-24 mb-24 p-10 rounded-3xl bg-gradient-to-br from-slate-900 to-black border border-slate-800 text-center relative overflow-hidden">
+    <section id="contact" class="mt-24 mb-20 p-10 rounded-3xl bg-gradient-to-br from-slate-900 to-black border border-slate-800 text-center relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-cyan-500/20 blur-[100px]"></div>
-      
-      <h2 class="text-3xl font-bold text-white mb-4 relative z-10">Asesoría Ejecutiva y Conferencias</h2>
-      <p class="text-slate-400 max-w-2xl mx-auto mb-8 relative z-10">
-        Disposición para brindar pláticas, conferencias y consultoría tecnológica a nivel ejecutivo, empresarial y gubernamental. Enfoque estratégico en la eficiencia operativa digital a nivel nacional e internacional.
+      <h2 class="text-3xl font-bold text-white mb-4 relative z-10">Colaboración, investigación y consultoría tecnológica</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto mb-8 relative z-10 leading-relaxed">
+        Disponible para colaboración académica, proyectos tecnológicos, charlas, consultoría e investigación aplicada en sistemas inteligentes, visión computacional, IoT, IA embebida y transformación digital.
       </p>
-      <a href="mailto:tu-correo@ejemplo.com" class="inline-block px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-cyan-400 hover:text-black transition-all relative z-10 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-        Contactar para Colaboración
-      </a>
+      <div class="flex flex-wrap justify-center gap-3 relative z-10">
+        <a href="mailto:wicholuiz29@gmail.com" class="inline-block px-7 py-3 rounded-xl bg-white text-black font-bold hover:bg-cyan-400 transition-all">Contáctame</a>
+        <a href="https://github.com/WichoArenas" target="_blank" rel="noopener noreferrer" class="inline-block px-7 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-eduardo-arenas-deseano-b97b8aa5/" target="_blank" rel="noopener noreferrer" class="inline-block px-7 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">LinkedIn</a>
+        <a href="https://www.hackster.io/TheWichoLuiz" target="_blank" rel="noopener noreferrer" class="inline-block px-7 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">Hackster</a>
+      </div>
     </section>
-
   </main>
 </Layout>
 
 <style>
-  @keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    background: rgb(30, 41, 59);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(203, 213, 225);
   }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    color: rgb(34, 211, 238);
+    transition: color 150ms ease;
+  }
+
+  .project-link:hover {
+    color: rgb(103, 232, 249);
+  }
+
+  .pub-badge {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 10px;
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(-110%); }
+    100% { transform: translateY(110%); }
+  }
+
+  .terminal-grid {
+    background-image: linear-gradient(rgba(34,197,94,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.25) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .satellite-grid {
+    background-image: linear-gradient(rgba(6,182,212,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.18) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mix-blend-mode: screen;
+  }
+
+  .algorithm-field {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(6,182,212,0.28), transparent 22%),
+      radial-gradient(circle at 70% 60%, rgba(168,85,247,0.28), transparent 20%),
+      repeating-conic-gradient(from 0deg, rgba(6,182,212,0.10) 0deg 12deg, transparent 12deg 24deg);
+    animation: algorithmSpin 18s linear infinite;
+  }
+
+  @keyframes algorithmSpin {
+    0% { transform: scale(1.15) rotate(0deg); }
+    100% { transform: scale(1.15) rotate(360deg); }
+  }
+
+  .business-lines {
+    background-image: linear-gradient(115deg, transparent 0%, rgba(6,182,212,0.2) 48%, transparent 52%), linear-gradient(65deg, transparent 0%, rgba(16,185,129,0.16) 48%, transparent 52%);
+    background-size: 140px 140px;
+    animation: moveLines 10s linear infinite;
+  }
+
+  @keyframes moveLines {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 140px 140px, -140px 140px; }
+  }
+
+  .drone-radar::before,
+  .drone-radar::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(168,85,247,0.45);
+    border-radius: 999px;
+    animation: radarPulse 2.4s ease-out infinite;
+  }
+
+  .drone-radar::after { animation-delay: 1.2s; }
+
+  @keyframes radarPulse {
+    0% { opacity: 0.8; width: 70px; height: 70px; }
+    100% { opacity: 0; width: 360px; height: 360px; }
+  }
+
+  .drone-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: linear-gradient(rgba(168,85,247,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.35) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .drone-path {
+    position: absolute;
+    left: 14%;
+    top: 55%;
+    width: 72%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(216,180,254,0.7), transparent);
+    transform: rotate(-10deg);
+  }
+
+  .drone-dot {
+    position: absolute;
+    top: -15px;
+    left: 0%;
+    color: #e9d5ff;
+    text-shadow: 0 0 14px rgba(216,180,254,0.9);
+    animation: droneMove 4.5s ease-in-out infinite;
+  }
+
+  @keyframes droneMove {
+    0% { left: 0%; transform: scale(1); }
+    50% { left: 92%; transform: scale(1.3); }
+    100% { left: 0%; transform: scale(1); }
+  }
+
+  .pcb-visual {
+    background:
+      radial-gradient(circle at 30% 45%, rgba(16,185,129,0.15), transparent 20%),
+      radial-gradient(circle at 70% 55%, rgba(6,182,212,0.12), transparent 24%),
+      #020617;
+  }
+
+  .pcb-board {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 0 12%, rgba(16,185,129,0.55) 12% 13%, transparent 13% 100%),
+      linear-gradient(0deg, transparent 0 24%, rgba(16,185,129,0.45) 24% 25%, transparent 25% 100%),
+      linear-gradient(90deg, transparent 0 64%, rgba(6,182,212,0.45) 64% 65%, transparent 65% 100%),
+      linear-gradient(0deg, transparent 0 67%, rgba(6,182,212,0.45) 67% 68%, transparent 68% 100%);
+    background-size: 110px 110px, 130px 130px, 95px 95px, 150px 150px;
+    animation: pcbShift 6s linear infinite;
+  }
+
+  .pcb-board::before {
+    content: "";
+    position: absolute;
+    inset: 20%;
+    border: 1px solid rgba(16,185,129,0.55);
+    border-radius: 14px;
+    box-shadow: 0 0 24px rgba(16,185,129,0.2), inset 0 0 30px rgba(16,185,129,0.06);
+  }
+
+  .pcb-board::after {
+    content: "";
+    position: absolute;
+    left: -30%;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.35), transparent);
+    animation: pcbScan 3.5s ease-in-out infinite;
+  }
+
+  @keyframes pcbShift {
+    from { background-position: 0 0, 0 0, 0 0, 0 0; }
+    to { background-position: 110px 110px, -130px 130px, 95px -95px, -150px -150px; }
+  }
+
+  @keyframes pcbScan {
+    from { left: -30%; }
+    to { left: 100%; }
+  }
+
+  .metric-chip {
+    border: 1px solid rgba(51, 65, 85, 0.7);
+    border-radius: 1rem;
+    background: rgba(2, 6, 23, 0.55);
+    padding: 1rem;
+  }
+
+  .metric-value {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    font-weight: 800;
+    color: rgb(103, 232, 249);
+  }
+
+  .metric-label {
+    margin-top: 0.25rem;
+    font-size: 0.68rem;
+    line-height: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(100, 116, 139);
+  }
+
+  .pipeline-node {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1rem;
+    background: rgba(2, 6, 23, 0.55);
+    padding: 1rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .node-index {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    font-weight: 800;
+  }
+
+  .node-title {
+    font-weight: 800;
+    color: white;
+  }
+
+  .node-text {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+    color: rgb(148, 163, 184);
+  }
+
+  .research-orbit {
+    background:
+      radial-gradient(circle at center, rgba(168,85,247,0.22), transparent 28%),
+      conic-gradient(from 90deg, transparent 0deg, rgba(6,182,212,0.20) 70deg, transparent 140deg, rgba(168,85,247,0.16) 230deg, transparent 360deg);
+    animation: algorithmSpin 24s linear infinite;
+  }
+
+  .fusion-track {
+    height: 0.6rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(51, 65, 85, 0.8);
+  }
+
+  .fusion-bar {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    transform-origin: left;
+    animation: fusionPulse 3.8s ease-in-out infinite;
+  }
+
+  .face-bar { width: 42%; background: linear-gradient(90deg, rgba(248,113,113,0.85), rgba(251,191,36,0.85)); }
+  .context-bar { width: 66%; background: linear-gradient(90deg, rgba(168,85,247,0.85), rgba(6,182,212,0.85)); animation-delay: 0.35s; }
+  .output-bar { width: 82%; background: linear-gradient(90deg, rgba(34,197,94,0.85), rgba(6,182,212,0.95)); animation-delay: 0.7s; }
+
+  @keyframes fusionPulse {
+    0%, 100% { transform: scaleX(0.72); opacity: 0.72; }
+    50% { transform: scaleX(1); opacity: 1; }
+  }
+
+  .pcb-panel {
+    isolation: isolate;
+  }
+
+  .pcb-image {
+    transform: scale(1.01);
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  .group:hover .pcb-image {
+    transform: scale(1.04);
+    filter: saturate(1.08) contrast(1.08) brightness(1.03);
+  }
+
+  .pcb-scan-line {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 28%;
+    background: linear-gradient(
+      180deg,
+      rgba(34, 211, 238, 0) 0%,
+      rgba(34, 211, 238, 0.18) 45%,
+      rgba(34, 211, 238, 0.35) 50%,
+      rgba(34, 211, 238, 0.18) 55%,
+      rgba(34, 211, 238, 0) 100%
+    );
+    transform: rotate(-8deg);
+    animation: pcbScanMove 4.5s linear infinite;
+  }
+
+  @keyframes pcbScanMove {
+    0% {
+      transform: translateY(-140%) rotate(-8deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(320%) rotate(-8deg);
+      opacity: 0;
+    }
+  }
+
+  .pcb-node {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #22d3ee;
+    box-shadow:
+      0 0 0 0 rgba(34, 211, 238, 0.55),
+      0 0 12px rgba(34, 211, 238, 0.9),
+      0 0 24px rgba(34, 211, 238, 0.45);
+    animation: pcbPulse 2.2s infinite ease-in-out;
+  }
+
+  .pcb-node-delay-1 {
+    animation-delay: 0.4s;
+  }
+
+  .pcb-node-delay-2 {
+    animation-delay: 0.9s;
+  }
+
+  .pcb-node-delay-3 {
+    animation-delay: 1.3s;
+  }
+
+  @keyframes pcbPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.45);
+      opacity: 1;
+    }
+  }
+
 </style>
 
-<script>
-  /* 1. SCRIPT DE ORCID */
-  const orcidID = "0009-0006-5247-3629"; 
-  const container = document.getElementById('orcid-publications');
+<script is:inline>
+  const ORCID_ID = "0009-0006-5247-3629";
+  const ORCID_URL = `https://pub.orcid.org/v3.0/${ORCID_ID}/works`;
 
-  async function fetchOrcidWorks() {
-    try {
-      const response = await fetch(`https://pub.orcid.org/v3.0/${orcidID}/works`, { headers: { 'Accept': 'application/json' }});
-      if (!response.ok) throw new Error('Error al conectar con ORCID');
-      const data = await response.json();
-      const works = data.group;
-      container.innerHTML = ''; 
-
-      if (works.length === 0) return container.innerHTML = `<p class="text-slate-400">Las publicaciones se están indexando en ORCID.</p>`;
-
-      works.forEach(workGroup => {
-        const summary = workGroup['work-summary'][0];
-        const title = summary.title.title.value;
-        if (title.includes("Smart Air Quality")) return; // Omite duplicado IEEE
-        
-        const year = summary['publication-date'] ? summary['publication-date'].year.value : 'N/D';
-        const type = summary.type.replace('_', ' ').toUpperCase();
-        let link = '#';
-        if (summary.url && summary.url.value) link = summary.url.value;
-
-        container.innerHTML += `
-          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800/50 transition-colors flex justify-between gap-4">
-            <div>
-              <div class="flex items-center gap-3 mb-1"><span class="px-2 text-[10px] rounded bg-green-500/10 text-green-400 border border-green-500/20">${type}</span><span class="text-sm font-mono text-slate-500">${year}</span></div>
-              <h3 class="text-lg font-bold text-slate-200">${title}</h3>
-            </div>
-            ${link !== '#' ? `<a href="${link}" target="_blank" class="shrink-0 px-4 py-2 text-sm rounded border border-slate-700 hover:border-cyan-500 text-slate-300">Leer &rarr;</a>` : ''}
-          </div>`;
-      });
-    } catch (e) { container.innerHTML = `<p class="text-red-400">Error al cargar publicaciones dinámicas.</p>`; }
-  }
-  document.addEventListener('DOMContentLoaded', fetchOrcidWorks);
-
-  /* 2. SCRIPT DE TERMINAL DINÁMICA (PERFIL) */
-  const skills = [
-    "Especialista en IA y Visión Computacional.",
-    "Desarrollo de Algoritmos Satelitales.",
-    "Ingeniería de Firmware a 1 MHz.",
-    "Optimización de Modelos de Negocio.",
-    "Sistemas Autónomos (Transport Canada Cert)."
+  const manualCitationSources = [
+    {
+      key: "ieee-saqms",
+      doi: "10.1109/MIM.2026.11224834",
+      badgeId: "citation-ieee-saqms"
+    }
   ];
-  let skillIndex = 0; let charIndex = 0; let isDeleting = false;
-  const typeTarget = document.getElementById('typewriter');
-  
-  function typeEffect() {
-    const currentSkill = skills[skillIndex];
-    if (isDeleting) {
-      typeTarget.innerText = currentSkill.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typeTarget.innerText = currentSkill.substring(0, charIndex + 1);
-      charIndex++;
-    }
 
-    let speed = isDeleting ? 30 : 70;
-    if (!isDeleting && charIndex === currentSkill.length) { speed = 2000; isDeleting = true; } 
-    else if (isDeleting && charIndex === 0) { isDeleting = false; skillIndex = (skillIndex + 1) % skills.length; speed = 500; }
-    setTimeout(typeEffect, speed);
+  const typewriterPhrases = [
+    "Investigador en visión computacional",
+    "Desarrollador de IA multimodal",
+    "Constructor de inteligencia embebida",
+    "Reconocimiento facial de emociones con contexto de escena",
+    "Reconocimiento de emociones sensible al contexto",
+    "IoT + sistemas de sensado inteligente",
+    "IA en tiempo real sobre hardware",
+    "Estrategia de IA orientada a negocio",
+    "Inteligencia con drones y satélites"
+  ];
+
+  const terminalStatusMessages = [
+    "Registro público ORCID conectado.",
+    "Contador de citas por DOI habilitado cuando existen metadatos.",
+    "Los manuscritos aceptados permanecen en pausa hasta su indexación oficial.",
+    "Enlaces IEEE, ORCID, DOI, Hackster y revista preservados.",
+    "Portafolio ejecutándose como sitio estático en GitHub Pages.",
+    "Visuales de PCB, dron, satélite y fusión BCPF inicializados."
+  ];
+
+  const focusPhrases = [
+    "Reconocimiento facial de emociones con contexto de escena",
+    "Inteligencia multimodal sensible al contexto",
+    "Pipelines de seguimiento de drones en tiempo real",
+    "Algoritmos de escaneo de imágenes satelitales",
+    "IA embebida and sensado inteligente platforms",
+    "Optimización de procesos empresariales con IA",
+    "Sistemas sincronizados hardware/software"
+  ];
+
+  const escapeHTML = (value) => String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+  const normalize = (value) => String(value ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+
+  function readCache(key, maxAgeMs = 12 * 60 * 60 * 1000) {
+    try {
+      const cached = JSON.parse(localStorage.getItem(key));
+      if (!cached) return null;
+      if (Date.now() - cached.timestamp > maxAgeMs) return null;
+      return cached.value;
+    } catch {
+      return null;
+    }
   }
-  setTimeout(typeEffect, 1000);
 
-  /* 3. SCRIPT DEL FONDO DE RED NEURONAL / ALGORITMO */
-  const canvas = document.getElementById('neural-bg');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-  let particles = [];
-  
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
-      this.radius = Math.random() * 2;
-    }
-    update() {
-      this.x += this.vx; this.y += this.vy;
-      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-    }
-    draw() {
-      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = '#06b6d4'; ctx.fill();
+  function writeCache(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify({ timestamp: Date.now(), value }));
+    } catch {
+      // Cache is optional.
     }
   }
-  
-  for(let i=0; i<70; i++) particles.push(new Particle());
 
-  function animateCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for(let i=0; i<particles.length; i++) {
-      particles[i].update(); particles[i].draw();
-      for(let j=i; j<particles.length; j++) {
-        const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 150) {
-          ctx.beginPath(); ctx.strokeStyle = `rgba(6, 182, 212, ${1 - dist/150})`;
-          ctx.lineWidth = 0.5; ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+  async function fetchCitationCountByDoi(doi) {
+    if (!doi) return null;
+
+    const normalizedDoi = doi.trim().toLowerCase();
+    const cacheKey = `portfolio:citation:${normalizedDoi}`;
+    const cached = readCache(cacheKey);
+    if (typeof cached === "number") return cached;
+
+    try {
+      const paperId = encodeURIComponent(`DOI:${normalizedDoi}`);
+      const response = await fetch(`https://api.semanticscholar.org/graph/v1/paper/${paperId}?fields=citationCount,title,year,url`);
+      if (response.ok) {
+        const data = await response.json();
+        if (typeof data.citationCount === "number") {
+          writeCache(cacheKey, data.citationCount);
+          return data.citationCount;
         }
       }
+    } catch {
+      // Continue to Crossref fallback.
     }
-    requestAnimationFrame(animateCanvas);
+
+    try {
+      const response = await fetch(`https://api.crossref.org/works/${encodeURIComponent(normalizedDoi)}`);
+      if (response.ok) {
+        const data = await response.json();
+        const count = data?.message?.["is-referenced-by-count"];
+        if (typeof count === "number") {
+          writeCache(cacheKey, count);
+          return count;
+        }
+      }
+    } catch {
+      // Citation count is optional.
+    }
+
+    return null;
   }
-  animateCanvas();
-  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+  function extractExternalId(summary, preferredType) {
+    const ids = summary?.["external-ids"]?.["external-id"] ?? [];
+    const match = ids.find((item) => normalize(item?.["external-id-type"]) === preferredType);
+    return match ?? null;
+  }
+
+  function externalLinkFromSummary(summary) {
+    const directUrl = summary?.url?.value;
+    if (directUrl) return directUrl;
+
+    const doi = extractExternalId(summary, "doi");
+    const doiUrl = doi?.["external-id-url"]?.value;
+    if (doiUrl) return doiUrl;
+
+    const doiValue = doi?.["external-id-value"];
+    if (doiValue) return `https://doi.org/${doiValue}`;
+
+    const anyUrl = (summary?.["external-ids"]?.["external-id"] ?? [])
+      .find((item) => item?.["external-id-url"]?.value)?.["external-id-url"]?.value;
+
+    return anyUrl || null;
+  }
+
+  function renderOrcidCard({ title, year, type, link, doi, citationCount }) {
+    const safeTitle = escapeHTML(title);
+    const safeType = escapeHTML(type || "TRABAJO");
+    const safeYear = escapeHTML(year || "N/A");
+    const safeLink = link ? escapeHTML(link) : null;
+    const safeDoi = doi ? escapeHTML(doi) : null;
+
+    return `
+      <article class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800/50 transition-colors group">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-3 mb-1">
+              <span class="px-2 py-0.5 text-[10px] font-bold tracking-wider rounded bg-green-500/10 text-green-300 border border-green-500/20">${safeType}</span>
+              <span class="text-sm font-mono text-slate-500">${safeYear}</span>
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-slate-800 text-slate-300 border border-slate-700">Citas: ${citationCount ?? "—"}</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-200 group-hover:text-cyan-300 transition-colors">${safeTitle}</h3>
+            ${safeDoi ? `<p class="text-xs text-slate-500 mt-2">DOI: ${safeDoi}</p>` : ""}
+          </div>
+          ${safeLink ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" class="shrink-0 px-4 py-2 text-sm rounded-lg border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-cyan-300 transition-colors">Open record &rarr;</a>` : ""}
+        </div>
+      </article>
+    `;
+  }
+
+  async function updateManualCitationBadges() {
+    let total = 0;
+
+    for (const item of manualCitationSources) {
+      const count = await fetchCitationCountByDoi(item.doi);
+      const badge = document.getElementById(item.badgeId);
+      if (badge) badge.textContent = `Citas: ${count ?? "—"}`;
+      if (typeof count === "number") total += count;
+    }
+
+    return total;
+  }
+
+  async function fetchOrcidWorks() {
+    const container = document.getElementById("orcid-publications");
+    const publicationMetric = document.getElementById("metric-publications");
+    const citationMetric = document.getElementById("metric-citations");
+    const updatedMetric = document.getElementById("metric-updated");
+    const pendingPaper = document.getElementById("pending-accepted-paper");
+
+    if (!container) return;
+
+    let totalCitas = await updateManualCitationBadges();
+    let renderedCount = 2; // IEEE + Revista Latinoamericana curated entries.
+
+    try {
+      const response = await fetch(ORCID_URL, { headers: { "Accept": "application/json" } });
+      if (!response.ok) throw new Error("Unable to connect to ORCID public API.");
+
+      const data = await response.json();
+      const groups = data?.group ?? [];
+
+      const renderedTitles = new Set([
+        normalize("Formación académica in I&M: Smart Air Quality Monitoring System — A Student Project"),
+        normalize("Smart Air Quality Monitoring System - a Student Project"),
+        normalize("Publicación en Revista Latinoamericana"),
+        normalize("A Probabilistic Framework for Reconocimiento facial de emociones con contexto de escena")
+      ]);
+
+      const cards = [];
+
+      for (const workGroup of groups) {
+        const summary = workGroup?.["work-summary"]?.[0];
+        if (!summary?.title?.title?.value) continue;
+
+        const title = summary.title.title.value;
+        const normalizedTitle = normalize(title);
+
+        if ([...renderedTitles].some((existing) => normalizedTitle.includes(existing) || existing.includes(normalizedTitle))) {
+          continue;
+        }
+
+        if ((normalizedTitle.includes("context-aware emotion") || normalizedTitle.includes("probabilistic framework") || normalizedTitle.includes("scene-context facial emotion")) && pendingPaper) {
+          pendingPaper.style.display = "none";
+        }
+
+        const year = summary?.["publication-date"]?.year?.value ?? "N/A";
+        const type = String(summary?.type ?? "work").replaceAll("_", " ").toUpperCase();
+        const link = externalLinkFromSummary(summary);
+        const doi = extractExternalId(summary, "doi")?.["external-id-value"] ?? null;
+        const citationCount = await fetchCitationCountByDoi(doi);
+
+        if (typeof citationCount === "number") totalCitas += citationCount;
+        renderedCount += 1;
+
+        cards.push(renderOrcidCard({ title, year, type, link, doi, citationCount }));
+      }
+
+      if (cards.length === 0) {
+        container.innerHTML = `
+          <p class="text-slate-500">
+            No additional ORCID works were found beyond the curated entries, or ORCID is still indexing the records.
+          </p>
+        `;
+      } else {
+        container.innerHTML = cards.join("");
+      }
+
+      if (publicationMetric) publicationMetric.textContent = String(renderedCount);
+      if (citationMetric) citationMetric.textContent = totalCitas ? String(totalCitas) : "—";
+      if (updatedMetric) updatedMetric.textContent = new Date().toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    } catch (error) {
+      console.error(error);
+      container.innerHTML = `
+        <p class="text-red-400">
+          Dynamic ORCID loading failed. Please use the direct ORCID and IEEE links above.
+        </p>
+      `;
+      if (publicationMetric) publicationMetric.textContent = String(renderedCount);
+      if (citationMetric) citationMetric.textContent = totalCitas ? String(totalCitas) : "—";
+    }
+  }
+
+  function startTypewriter() {
+    const target = document.getElementById("typewriter");
+    if (!target) return;
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function tick() {
+      const phrase = typewriterPhrases[phraseIndex];
+
+      if (deleting) {
+        target.textContent = phrase.substring(0, charIndex - 1);
+        charIndex -= 1;
+      } else {
+        target.textContent = phrase.substring(0, charIndex + 1);
+        charIndex += 1;
+      }
+
+      let speed = deleting ? 30 : 65;
+
+      if (!deleting && charIndex === phrase.length) {
+        speed = 1700;
+        deleting = true;
+      } else if (deleting && charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+        speed = 350;
+      }
+
+      setTimeout(tick, speed);
+    }
+
+    tick();
+  }
+
+  function startTerminalStatus() {
+    const target = document.getElementById("terminal-status");
+    if (!target) return;
+
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % terminalStatusMessages.length;
+      target.textContent = terminalStatusMessages[index];
+    }, 2600);
+  }
+
+  function startLiveFocus() {
+    const target = document.getElementById("live-focus");
+    if (!target) return;
+
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % focusPhrases.length;
+      target.textContent = focusPhrases[index];
+    }, 2800);
+  }
+
+  function startNeuralBackground() {
+    const canvas = document.getElementById("neural-bg");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resize();
+
+    const particles = Array.from({ length: 82 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: Math.random() * 2 + 0.5
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const particle = particles[i];
+
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#06b6d4";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const other = particles[j];
+          const dx = particle.x - other.x;
+          const dy = particle.y - other.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 145) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(6, 182, 212, ${1 - distance / 145})`;
+            ctx.lineWidth = 0.45;
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(other.x, other.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    draw();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    startTypewriter();
+    startTerminalStatus();
+    startLiveFocus();
+    startNeuralBackground();
+    fetchOrcidWorks();
+  });
 </script>
