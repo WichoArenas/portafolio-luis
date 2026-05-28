@@ -2,11 +2,25 @@ name: Update certifications
 
 on:
   workflow_dispatch:
+
   schedule:
+    # Every Monday at 15:00 UTC
     - cron: "0 15 * * 1"
+
+  push:
+    paths:
+      - "src/data/certifications-sources.json"
+      - "scripts/update_certifications.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/update-certifications.yml"
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-certifications
+  cancel-in-progress: false
 
 jobs:
   update-certifications:
@@ -15,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,7 +44,7 @@ jobs:
       - name: Update certifications JSON
         run: npm run update:certs
 
-      - name: Check generated changes
+      - name: Show generated changes
         run: git status --short
 
       - name: Commit updated certifications
