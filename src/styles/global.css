@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@media (hover: hover) {
+  article {
+    will-change: transform;
+  }
+
+  article:hover {
+    transform: translateY(-3px);
+  }
+
+  a,
+  button {
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  a:hover,
+  button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: white;
+}
