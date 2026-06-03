@@ -144,6 +144,41 @@
     "description": "Those who earn the Google Data Analytics Certificate, developed by Google, have demonstrated their competence in foundational data analysis. Through hands-on activities and assessments, graduates develop proficiency in preparing, processing, analyzing, and sharing data using tools and platforms including spreadsheets, SQL, Tableau, and R, preparing them for introductory-level roles in data analytics."
   },
   {
+    "title": "Credly",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "2026",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/earner/earned/badge/f6a38e3b-5586-495d-b536-fb6643360909",
+    "category": "Business Intelligence",
+    "featured": true,
+    "skills": [
+      "Career Development",
+      "Data Modeling",
+      "Decision Making",
+      "Foundations of Business Intelligence"
+    ],
+    "image": "",
+    "description": "Credly is a global Open Badge platform that closes the gap between skills and opportunities. We work with academic institutions, corporations, and professional associations to translate learning outcomes into digital credentials that are immediately validated, managed, and shared."
+  },
+  {
+    "title": "Credly",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "2026",
+    "credentialId": "Credly Badge",
+    "url": "https://www.credly.com/earner/earned/badge/c7f82485-60b9-4005-a60a-64afed4aba8b",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": [
+      "Career Development",
+      "Introduction to Data Science",
+      "Introduction to Python"
+    ],
+    "image": "",
+    "description": "Credly is a global Open Badge platform that closes the gap between skills and opportunities. We work with academic institutions, corporations, and professional associations to translate learning outcomes into digital credentials that are immediately validated, managed, and shared."
+  },
+  {
     "title": "Google AI Essentials V1 was issued by Coursera to Luis Eduardo Arenas Deseano (Wicho).",
     "issuer": "Google / Coursera",
     "platform": "Credly",
