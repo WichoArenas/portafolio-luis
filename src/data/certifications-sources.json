@@ -174,5 +174,38 @@
       "Prompting",
       "Responsible AI"
     ]
+  },
+  {
+    "url": "https://www.credly.com/earner/earned/badge/f6a38e3b-5586-495d-b536-fb6643360909",
+    "fallbackTitle": "Google Business Intelligence Professional Certificate(v.2)",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "2026",
+    "credentialId": "Credly Badge",
+    "category": "Business Intelligence",
+    "featured": true,
+    "skills": [
+      "Career Development",
+      "Data Modeling",
+      "Decision Making",
+      "Foundations of Business Intelligence"
+    ]
+  },
+  {
+    "url": "https://www.credly.com/earner/earned/badge/c7f82485-60b9-4005-a60a-64afed4aba8b",
+    "fallbackTitle": "Google Advanced Data Analytics Professional Certificate(v.2)",
+    "issuer": "Google / Coursera",
+    "platform": "Credly",
+    "date": "2026",
+    "credentialId": "Credly Badge",
+    "category": "Data Analytics",
+    "featured": true,
+    "skills": [
+      "Career Development",
+      "Introduction to Data Science",
+      "Introduction to Python"
+    ]
   }
+
+
 ]
