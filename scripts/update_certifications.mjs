@@ -35,14 +35,27 @@ function decodeHtml(value = "") {
 }
 
 function cleanTitle(title, fallbackTitle) {
-  if (!title) return fallbackTitle;
+  if (!title) return fallbackTitle || "Verified Credential";
 
-  return title
+  let cleaned = title
     .replace(/\s*-\s*Credly\s*$/i, "")
     .replace(/\s*\|\s*Coursera\s*$/i, "")
     .replace(/\s*Coursera\s*$/i, "")
     .replace(/\s+/g, " ")
-    .trim() || fallbackTitle;
+    .trim();
+
+  // Credly sometimes returns: "X was issued by Coursera to Luis..."
+  const issuedMatch = cleaned.match(/^(.+?)\s+was issued by\s+.+?\s+to\s+.+\.?$/i);
+  if (issuedMatch?.[1]) {
+    cleaned = issuedMatch[1].trim();
+  }
+
+  // Avoid useless generic titles
+  if (!cleaned || /^credly$/i.test(cleaned) || /^badge wallet$/i.test(cleaned)) {
+    return fallbackTitle || "Verified Credential";
+  }
+
+  return cleaned;
 }
 
 function detectPlatform(url) {
@@ -74,6 +87,12 @@ async function fetchMetadata(source) {
 
     const ogTitle = getMeta(html, "og:title");
     const titleTag = getTitleTag(html);
+
+    const scrapedTitle = cleanTitle(
+      ogTitle || titleTag,
+      source.fallbackTitle || source.title
+    );
+
     const description =
       getMeta(html, "og:description") ||
       getMeta(html, "description") ||
@@ -87,7 +106,10 @@ async function fetchMetadata(source) {
       "";
 
     return {
-      title: cleanTitle(ogTitle || titleTag, source.fallbackTitle || source.title),
+      // IMPORTANT:
+      // Manual title wins. Credly scraped titles are only fallback.
+      title: source.fallbackTitle || source.title || scrapedTitle,
+
       issuer: source.issuer,
       platform: source.platform || detectPlatform(source.url),
       date: source.date,
@@ -103,7 +125,7 @@ async function fetchMetadata(source) {
     console.warn(`Metadata fetch failed for ${source.url}: ${error.message}`);
 
     return {
-      title: source.fallbackTitle || source.title,
+      title: source.fallbackTitle || source.title || "Verified Credential",
       issuer: source.issuer,
       platform: source.platform || detectPlatform(source.url),
       date: source.date,
